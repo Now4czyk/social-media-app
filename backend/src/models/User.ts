@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new Schema(
   {
@@ -9,7 +9,7 @@ const UserSchema = new Schema(
     posts: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Post",
+        ref: 'Post',
         required: true,
       },
     ],
@@ -17,4 +17,4 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-export const User = mongoose.model("User", UserSchema);
+export const User = mongoose.model('User', UserSchema);
