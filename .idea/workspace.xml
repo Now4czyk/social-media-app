@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/NotFound.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Unauthorized.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MERN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MERN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/mutations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +72,7 @@
     "eslint.code.style.apply.dismiss": "true",
     "javascript.nodejs.core.library.configured.version": "18.6.0",
     "javascript.nodejs.core.library.typings.version": "18.6.0",
-    "last_opened_file_path": "/home/kn/node/MERN",
+    "last_opened_file_path": "/home/kn/node/its-not-rocket-science-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,7 +82,7 @@
     "prettierjs.PrettierConfiguration.Package": "/home/kn/node/MERN/backend/node_modules/prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/kn/node/MERN/frontend/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/kn/node/its-not-rocket-science-app/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -98,11 +92,11 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/utils" />
       <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/frontend/src/pages" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/backend" />
-      <recent name="$PROJECT_DIR$/backend/src/graphql" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -122,7 +116,7 @@
       <workItem from="1660458221329" duration="335000" />
       <workItem from="1660458567360" duration="99000" />
       <workItem from="1660458675866" duration="36861000" />
-      <workItem from="1661441978673" duration="5465000" />
+      <workItem from="1661441978673" duration="10689000" />
     </task>
     <servers />
   </component>

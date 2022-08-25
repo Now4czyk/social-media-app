@@ -4,4 +4,5 @@ export const auth = {
     localStorage.setItem("token", token);
   },
   logout: () => localStorage.removeItem("token"),
+  getToken: () => localStorage.getItem("token"),
 };

@@ -90,9 +90,10 @@ const mutations = {
     { email, password }: Pick<UserType, 'email' | 'password'>,
     req: Request
   ) => {
-    const decoded = decodeToken(req) as Context;
-    console.log('decoded');
-    console.log(decoded);
+    // TO DELETE how to decode
+    // const decoded = decodeToken(req) as Context;
+    // console.log('decoded');
+    // console.log(decoded);
     const user = await User.findOne({ email });
     if (!user) throw new ValidationError('Email is invalid');
 

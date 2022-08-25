@@ -23,7 +23,7 @@ export const Signin = () => {
   const { handleSubmit, control, setError } = methods;
 
   const [login, { error }] = useMutation(SINGIN_USER_MUTATION, {
-    // onCompleted: () => navigate("/home"),
+    onCompleted: () => navigate("/home"),
   });
 
   const onSubmit = async ({ password, email }: FormInputs) => {
