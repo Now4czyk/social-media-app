@@ -10,16 +10,22 @@ export const types = `
     updatedAt: String!
   }
   
-  type AuthData {
+  type Token {
     token: String!
-    userId: String!
   }
 `;
 
-export type UserType = {
+export interface UserType {
   email: string;
   password: string;
   confirmPassword: string;
   firstName: string;
   lastName: string;
-};
+}
+
+export type Context = {
+  userId: string;
+  email: string;
+  iat: number;
+  exp: number;
+} | null;

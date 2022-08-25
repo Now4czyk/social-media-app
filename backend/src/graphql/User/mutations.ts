@@ -10,5 +10,5 @@ export const mutations = `
   login(
     email: String!
     password: String!
-  ): AuthData
+  ): Token
 `;

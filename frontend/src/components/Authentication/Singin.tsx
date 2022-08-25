@@ -5,6 +5,7 @@ import { FormInputText } from "../Form/FormInputText";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { SINGIN_USER_MUTATION } from "graphql/Mutations";
+import { auth } from "../../utils/auth";
 
 interface FormInputs {
   email: string;
@@ -16,17 +17,11 @@ const defaultValues: FormInputs = {
   password: "",
 };
 
-export interface AuthData {
-  token: string;
-  userId: string;
-}
-
 export const Signin = () => {
   const navigate = useNavigate();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError } = methods;
 
-  const [authData, setAuthData] = useState({});
   const [login, { error }] = useMutation(SINGIN_USER_MUTATION, {
     onCompleted: () => navigate("/home"),
   });
@@ -39,9 +34,7 @@ export const Signin = () => {
       },
     });
 
-    console.log("authData");
-    console.log(authData);
-    setAuthData(authData.data.login);
+    auth.login(authData.data.login.token);
 
     if (error) {
       console.log("SIGNIN ERROR");

@@ -5,13 +5,18 @@ import {
   ApolloProvider,
   HttpLink,
   from,
+  createHttpLink,
 } from "@apollo/client";
 import { onError, ErrorResponse } from "@apollo/client/link/error";
 import { Users, Form, Home } from "./pages";
-import { Navigate, useRoutes } from "react-router-dom";
+import { Navigate, Route, Routes, useRoutes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import Authentication from "./pages/Authentication";
 import { toast } from "react-toastify";
+import { setContext } from "@apollo/client/link/context";
+import { Unauthorized } from "./pages/Unauthorized";
+import { RouteGuard } from "./utils/routeGuard";
+import { NotFound } from "./pages/NotFound";
 
 type customError = {
   message: string;
@@ -21,6 +26,9 @@ type customError = {
 const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
   if (graphQLErrors) {
     const { message, extensions } = graphQLErrors[0];
+    if (extensions.code === "GRAPHQL_VALIDATION_FAILED") {
+      console.log("unauthorized");
+    }
     console.log("ERROR from App.tsx");
     console.log(message);
     let iterator = 0;
@@ -39,6 +47,17 @@ const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
   }
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "Bearer fake",
+    },
+  };
+});
+
 const link = from([
   errorLink,
   new HttpLink({ uri: "http://localhost:8080/graphql" }),
@@ -46,18 +65,21 @@ const link = from([
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
+  link: authLink.concat(link),
 });
 
-const MainRoutes = () =>
-  useRoutes([
-    { path: "/signin", element: <Authentication /> },
-    { path: "/signup", element: <Authentication /> },
-    { path: "/home", element: <Home /> },
-    { path: "/form", element: <Form /> },
-    { path: "/users", element: <Users /> },
-    { path: "*", element: <Navigate to="/home" replace /> },
-  ]);
+const MainRoutes = () => (
+  <Routes>
+    <Route path="/signin" element={<Authentication />} />
+    <Route path="/signup" element={<Authentication />} />
+    <Route path="/unauthorized" element={<Unauthorized />} />
+    <Route path="/not-found" element={<NotFound />} />
+    <Route path="/home" element={RouteGuard({ element: <Home /> })} />
+    <Route path="/form" element={RouteGuard({ element: <Form /> })} />
+    <Route path="/users" element={RouteGuard({ element: <Users /> })} />
+    <Route path="/*" element={<Navigate to="not-found" />} />
+  </Routes>
+);
 
 const App = () => (
   <ApolloProvider client={client}>

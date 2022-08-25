@@ -25,6 +25,7 @@
       "classes": true,
       "variables": true,
       "allowNamedExports": false
-    }]
+    }],
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

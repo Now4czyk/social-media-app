@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { useQuery } from "@apollo/client";
-import { LOAD_USERS } from "../graphql/Queries";
+import { LOAD_USERS, UserType } from "../graphql/Queries";
 import { useEffect, useState } from "react";
 
 export const Users = () => {
@@ -9,21 +8,24 @@ export const Users = () => {
 
   useEffect(() => {
     if (data) {
-      setUsers(data?.getAllUsers);
-      console.log(data?.getAllUsers);
+      setUsers(data.getAllUsers);
     }
   }, [data]);
+
+  console.log(users);
 
   return (
     <div>
       {loading
         ? "LOADING"
-        : users.map((user) => (
+        : users
+        ? users.map((user: UserType) => (
             <>
               {user.email}
               <br />
             </>
-          ))}
+          ))
+        : ""}
     </div>
   );
 };

@@ -17,9 +17,14 @@ interface LayoutProps {
 
 type Sites = "/home" | "/users" | "/form";
 
+const sites = ["/home", "/users", "/form"];
+
 export const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isTab = sites.find((site) => site === location.pathname);
+  console.log("isTab");
+  console.log(isTab);
   const [value, setValue] = useState<Sites>(location.pathname as Sites);
 
   useEffect(() => {

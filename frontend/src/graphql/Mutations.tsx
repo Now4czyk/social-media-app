@@ -18,7 +18,6 @@ export const SINGIN_USER_MUTATION = gql(`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      userId
     }
   }
 `);

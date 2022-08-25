@@ -1,12 +1,25 @@
-import { UserType } from './types';
+import { Context, UserType } from './types';
 import { User } from '../../models';
 import validator from 'validator';
-import { UserInputError, ValidationError } from 'apollo-server-express';
+import {
+  AuthenticationError,
+  UserInputError,
+  ValidationError,
+} from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { Request } from 'express';
+import { decodeToken } from '../../middleware/decodeToken';
 
 const queries = {
-  getAllUsers: async () => await User.find(),
+  getAllUsers: async (_: ParentNode, args: any) => {
+    console.log('getAllUSers');
+    //TODO
+    return [];
+  },
+  getUser: async (_: ParentNode, args: any) =>
+    //TODO
+    await User.findOne(),
 };
 
 const mutations = {
@@ -60,17 +73,27 @@ const mutations = {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    return await new User({
+    const newUser = await new User({
       firstName,
       lastName,
       email,
       password: hashedPassword,
     }).save();
+
+    console.log('SUCCESS CREATE USER');
+    console.log(newUser);
+
+    return newUser;
   },
   login: async (
     _: ParentNode,
-    { email, password }: Pick<UserType, 'email' | 'password'>
+    { email, password }: Pick<UserType, 'email' | 'password'>,
+    req: Request
   ) => {
+    // TO DELETE how to decode
+    // const decoded = decodeToken(req) as Context;
+    // console.log('decoded');
+    // console.log(decoded);
     const user = await User.findOne({ email });
     if (!user) throw new ValidationError('Email is invalid');
 
@@ -86,10 +109,7 @@ const mutations = {
       { expiresIn: '1h' }
     );
 
-    return {
-      token,
-      userId: user.id,
-    };
+    return { token };
   },
 };
 
