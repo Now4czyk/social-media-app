@@ -2,97 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.prettierrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/.bin/eslint-config-prettier" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/@typescript-eslint.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/babel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/bin/cli.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/bin/validators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/flowtype.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/prettier.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/react.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/standard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/unicorn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-config-prettier/vue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-plugin-prettier/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-plugin-prettier/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-plugin-prettier/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-plugin-prettier/eslint-plugin-prettier.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/eslint-plugin-prettier/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/diff.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/diff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/fast-diff/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.github/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.prettierignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/node_modules/prettier-linter-helpers/test/index.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/middleware/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Form/FormInputText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Form/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Layout/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Authentication.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prettierrc.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/mutations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/Post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,11 +98,11 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/frontend/src/pages" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/backend/src/graphql" />
-      <recent name="$PROJECT_DIR$/backend/src" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -194,6 +122,7 @@
       <workItem from="1660458221329" duration="335000" />
       <workItem from="1660458567360" duration="99000" />
       <workItem from="1660458675866" duration="36861000" />
+      <workItem from="1661441978673" duration="5465000" />
     </task>
     <servers />
   </component>

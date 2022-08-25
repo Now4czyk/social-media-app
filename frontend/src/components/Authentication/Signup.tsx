@@ -28,7 +28,7 @@ export const Signup = () => {
   const { handleSubmit, control, setError, formState } = methods;
 
   const [createUser, { error }] = useMutation(CREATE_USER_MUTATION, {
-    onCompleted: () => navigate("/home"),
+    onCompleted: () => navigate("/signin"),
   });
 
   const onSubmit = async ({

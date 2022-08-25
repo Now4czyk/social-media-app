@@ -5,6 +5,7 @@ import {
   ApolloProvider,
   HttpLink,
   from,
+  createHttpLink,
 } from "@apollo/client";
 import { onError, ErrorResponse } from "@apollo/client/link/error";
 import { Users, Form, Home } from "./pages";
@@ -12,6 +13,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import Authentication from "./pages/Authentication";
 import { toast } from "react-toastify";
+import { setContext } from "@apollo/client/link/context";
 
 type customError = {
   message: string;
@@ -39,6 +41,20 @@ const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
   }
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+
+  console.log("token APP.TSX");
+  console.log(token);
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "Bearer fake",
+    },
+  };
+});
+
 const link = from([
   errorLink,
   new HttpLink({ uri: "http://localhost:8080/graphql" }),
@@ -46,7 +62,7 @@ const link = from([
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
+  link: authLink.concat(link),
 });
 
 const MainRoutes = () =>
