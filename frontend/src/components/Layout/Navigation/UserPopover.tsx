@@ -12,13 +12,13 @@ import {
 } from "@mui/material";
 import { useState, MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
-import { Authorization, VERIFY } from "../../../graphql";
+import { AuthorizationQuery, VERIFY } from "../../../graphql";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../utils/auth";
 
 export const UserPopover = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
-  const { data } = useQuery<Authorization>(VERIFY);
+  const { data } = useQuery<AuthorizationQuery>(VERIFY);
   const navigate = useNavigate();
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -53,8 +53,11 @@ export const UserPopover = () => {
           component="nav"
           aria-label="mailbox folders"
         >
-          <ListItemButton disabled={true}>
-            <ListItemText primary="Profile" />
+          <ListItemButton>
+            <ListItemText
+              primary="Profile"
+              onClick={() => navigate("profile")}
+            />
           </ListItemButton>
           <Divider />
           <ListItemButton divider disabled>

@@ -1,31 +1,22 @@
 import { useQuery } from "@apollo/client";
-import { LOAD_USERS, UserType } from "../graphql";
-import { useEffect, useState } from "react";
+import { FETCH_USERS, UsersQuery } from "../graphql";
+import { CircularProgress } from "@mui/material";
 
 export const Users = () => {
-  const { error, loading, data } = useQuery(LOAD_USERS);
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    if (data) {
-      setUsers(data.getAllUsers);
-    }
-  }, [data]);
-
-  console.log(users);
+  const { loading, data } = useQuery<UsersQuery>(FETCH_USERS);
 
   return (
     <div>
-      {loading
-        ? "LOADING"
-        : users
-        ? users.map((user: UserType) => (
-            <>
-              {user.email}
-              <br />
-            </>
-          ))
-        : ""}
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        data?.getAllUsers.map((user) => (
+          <>
+            {user.email}
+            <br />
+          </>
+        ))
+      )}
     </div>
   );
 };

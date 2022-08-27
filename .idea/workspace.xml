@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/client/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Logout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Form.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,16 +139,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/frontend/src/routes/routes.tsx</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -1,28 +1,20 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from "react";
-import {
-  AppBar,
-  Avatar,
-  Box,
-  CardHeader,
-  Container,
-  Tab,
-  Tabs,
-} from "@mui/material";
+import { AppBar, Box, Container, Tab, Tabs } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Authorization, VERIFY } from "../../graphql";
+import { AuthorizationQuery, VERIFY } from "../../graphql";
 import { UserPopover } from "./Navigation/UserPopover";
 
 interface LayoutProps {
   children?: ReactNode;
 }
 
-type Sites = "/home" | "/users" | "/form";
+type Sites = "/home" | "/users" | "/form" | "/profile";
 
-const sites = ["/home", "/users", "/form"];
+const sites = ["/home", "/users", "/form", "/profile"];
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { data } = useQuery<Authorization>(VERIFY);
+  const { data } = useQuery<AuthorizationQuery>(VERIFY);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -69,8 +61,12 @@ export const Layout = ({ children }: LayoutProps) => {
           {data?.verify.isAuthorized && (
             <Tabs value={value} onChange={handleChange}>
               <Tab label="Home" style={{ color: "white" }} value="/home" />
+              <Tab
+                label="Profile"
+                style={{ color: "white" }}
+                value="/profile"
+              />
               <Tab label="Users" style={{ color: "white" }} value="/users" />
-              <Tab label="Form" style={{ color: "white" }} value="/form" />
             </Tabs>
           )}
         </Box>

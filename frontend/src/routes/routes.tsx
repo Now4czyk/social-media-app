@@ -1,11 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Authentication from "../pages/Authentication";
-import { Unauthorized } from "../pages/Unauthorized";
-import { NotFound } from "../pages/NotFound";
-import { Logout } from "../pages/Logout";
 import { RouteGuard } from "./routeGuard";
-import { Form, Home, Users } from "../pages";
+import { Home, Users, Logout, NotFound, Unauthorized } from "../pages";
 import React from "react";
+import { Profile } from "../pages/Profile";
 
 export const MainRoutes = () => (
   <Routes>
@@ -15,7 +13,7 @@ export const MainRoutes = () => (
     <Route path="/not-found" element={<NotFound />} />
     <Route path="/logout" element={<Logout />} />
     <Route path="/home" element={RouteGuard({ element: <Home /> })} />
-    <Route path="/form" element={RouteGuard({ element: <Form /> })} />
+    <Route path="/profile" element={RouteGuard({ element: <Profile /> })} />
     <Route path="/users" element={RouteGuard({ element: <Users /> })} />
     <Route path="/*" element={<Navigate to="not-found" />} />
   </Routes>
