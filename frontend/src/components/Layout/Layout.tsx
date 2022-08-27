@@ -11,6 +11,7 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Authorization, VERIFY } from "../../graphql";
+import { UserPopover } from "./Navigation/UserPopover";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -21,7 +22,7 @@ type Sites = "/home" | "/users" | "/form";
 const sites = ["/home", "/users", "/form"];
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { data, error } = useQuery<Authorization>(VERIFY);
+  const { data } = useQuery<Authorization>(VERIFY);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -73,7 +74,7 @@ export const Layout = ({ children }: LayoutProps) => {
             </Tabs>
           )}
         </Box>
-        <Avatar sx={{ marginY: "auto", cursor: "pointer" }} />
+        <UserPopover />
       </AppBar>
       <Container sx={{ backgroundColor: "lightgray" }} fixed>
         {children}
