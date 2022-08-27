@@ -7,11 +7,16 @@ export const LOAD_USERS = gql(`
       email
       firstName
       lastName
-      token
       createdAt
       updatedAt
     }
   }
 `);
 
-export type UserType = Record<string, string>;
+export const VERIFY = gql(`
+  query {   
+    verify {
+      isAuthorized
+    }
+  }
+`);

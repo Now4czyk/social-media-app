@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { LOAD_USERS, UserType } from "../graphql/Queries";
+import { LOAD_USERS, UserType } from "../graphql";
 import { useEffect, useState } from "react";
 
 export const Users = () => {
