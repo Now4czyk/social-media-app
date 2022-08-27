@@ -1,4 +1,4 @@
 export const queries = `
-  getAllUsers : [User]
+  getAllUsers : [User!]!
   getUser : User
 `;
