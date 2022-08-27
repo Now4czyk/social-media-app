@@ -8,8 +8,9 @@ import {
   Tab,
   Tabs,
 } from "@mui/material";
-import { css } from "@emotion/css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { Authorization, VERIFY } from "../../graphql";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -20,11 +21,10 @@ type Sites = "/home" | "/users" | "/form";
 const sites = ["/home", "/users", "/form"];
 
 export const Layout = ({ children }: LayoutProps) => {
+  const { data, error } = useQuery<Authorization>(VERIFY);
   const location = useLocation();
   const navigate = useNavigate();
-  const isTab = sites.find((site) => site === location.pathname);
-  console.log("isTab");
-  console.log(isTab);
+
   const [value, setValue] = useState<Sites>(location.pathname as Sites);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export const Layout = ({ children }: LayoutProps) => {
         >
           <Box
             sx={{
-              lineHeight: "2.75rem",
+              lineHeight: "3rem",
               fontSize: "1.5rem",
               fontWeight: "600",
               cursor: "pointer",
@@ -65,11 +65,13 @@ export const Layout = ({ children }: LayoutProps) => {
           >
             Boring App
           </Box>
-          <Tabs value={value} onChange={handleChange}>
-            <Tab label="Home" style={{ color: "white" }} value="/home" />
-            <Tab label="Users" style={{ color: "white" }} value="/users" />
-            <Tab label="Form" style={{ color: "white" }} value="/form" />
-          </Tabs>
+          {data?.verify.isAuthorized && (
+            <Tabs value={value} onChange={handleChange}>
+              <Tab label="Home" style={{ color: "white" }} value="/home" />
+              <Tab label="Users" style={{ color: "white" }} value="/users" />
+              <Tab label="Form" style={{ color: "white" }} value="/form" />
+            </Tabs>
+          )}
         </Box>
         <Avatar sx={{ marginY: "auto", cursor: "pointer" }} />
       </AppBar>

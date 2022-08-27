@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/NotFound.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Unauthorized.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MERN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MERN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/mutations.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/queries.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/resolvers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +37,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="dev/basic_frontend_setup" />
-                    <option name="lastUsedInstant" value="1660457673" />
+                    <option name="branchName" value="feture/add_verification_enpoint" />
+                    <option name="lastUsedInstant" value="1661592524" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1660457399" />
+                    <option name="lastUsedInstant" value="1661592492" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="dev/basic_frontend_setup" />
+                    <option name="lastUsedInstant" value="1660457673" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="chore/prettier_and_eslint_setup" />
@@ -64,28 +72,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "eslint.code.style.apply.dismiss": "true",
-    "javascript.nodejs.core.library.configured.version": "18.6.0",
-    "javascript.nodejs.core.library.typings.version": "18.6.0",
-    "last_opened_file_path": "/home/kn/node/its-not-rocket-science-app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_interpreter_path": "/home/kn/.nvm/versions/node/v18.6.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/home/kn/node/MERN/backend/node_modules/prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/kn/node/its-not-rocket-science-app/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;eslint.code.style.apply.dismiss&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.6.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.6.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kn/node/its-not-rocket-science-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/kn/.nvm/versions/node/v18.6.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/kn/node/MERN/backend/node_modules/prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/kn/node/its-not-rocket-science-app/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />

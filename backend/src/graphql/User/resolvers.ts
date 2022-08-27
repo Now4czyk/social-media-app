@@ -12,10 +12,10 @@ import { Request } from 'express';
 import { decodeToken } from '../../middleware/decodeToken';
 
 const queries = {
-  getAllUsers: async (_: ParentNode, args: any) => {
-    console.log('getAllUSers');
-    //TODO
-    return [];
+  getAllUsers: async (_: ParentNode, args: any, req: Request) => {
+    decodeToken(req);
+
+    return User.find();
   },
   getUser: async (_: ParentNode, args: any) =>
     //TODO
@@ -80,9 +80,6 @@ const mutations = {
       password: hashedPassword,
     }).save();
 
-    console.log('SUCCESS CREATE USER');
-    console.log(newUser);
-
     return newUser;
   },
   login: async (
@@ -90,10 +87,6 @@ const mutations = {
     { email, password }: Pick<UserType, 'email' | 'password'>,
     req: Request
   ) => {
-    // TO DELETE how to decode
-    // const decoded = decodeToken(req) as Context;
-    // console.log('decoded');
-    // console.log(decoded);
     const user = await User.findOne({ email });
     if (!user) throw new ValidationError('Email is invalid');
 
