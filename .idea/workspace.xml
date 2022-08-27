@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Form.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/middleware/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +24,14 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="feature/add_CRUD_for_posts" />
+                    <option name="lastUsedInstant" value="1661612273" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1661612156" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="feature/adjust_FE_for_logging_our" />
                     <option name="lastUsedInstant" value="1661606594" />
                   </RecentBranch>
@@ -39,16 +40,8 @@
                     <option name="lastUsedInstant" value="1661592524" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1661592492" />
-                  </RecentBranch>
-                  <RecentBranch>
                     <option name="branchName" value="dev/basic_frontend_setup" />
                     <option name="lastUsedInstant" value="1660457673" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="chore/prettier_and_eslint_setup" />
-                    <option name="lastUsedInstant" value="1660416786" />
                   </RecentBranch>
                 </list>
               </option>

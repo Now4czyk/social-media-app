@@ -1,14 +1,8 @@
 import express from 'express';
-import {
-  ApolloServer,
-  AuthenticationError,
-  ValidationError,
-} from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { typeDefs, resolvers } from './graphql';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
-import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
