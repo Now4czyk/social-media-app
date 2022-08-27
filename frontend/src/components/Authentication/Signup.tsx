@@ -27,7 +27,7 @@ export const Signup = () => {
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;
 
-  const [createUser, { error }] = useMutation(CREATE_USER_MUTATION, {
+  const [createUser] = useMutation(CREATE_USER_MUTATION, {
     onCompleted: () => navigate("/signin"),
   });
 
@@ -71,13 +71,6 @@ export const Signup = () => {
           confirmPassword,
         },
       });
-      console.log("user");
-      console.log(user);
-    }
-
-    if (error) {
-      console.log("SIGNUP ERROR");
-      console.log(error);
     }
   };
 

@@ -2,23 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/mutations.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/queries.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/resolvers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/graphql/Authorization/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/client/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Logout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/routes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/middleware/decodeToken.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +35,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/adjust_FE_for_logging_our" />
+                    <option name="lastUsedInstant" value="1661606594" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feture/add_verification_enpoint" />
                     <option name="lastUsedInstant" value="1661592524" />
@@ -100,11 +103,11 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/routes" />
       <recent name="$PROJECT_DIR$/frontend/src/utils" />
       <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/frontend/src/pages" />
       <recent name="$PROJECT_DIR$/frontend" />
-      <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -141,5 +144,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/routes/routes.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

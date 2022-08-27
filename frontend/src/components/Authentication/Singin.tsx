@@ -22,7 +22,7 @@ export const Signin = () => {
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError } = methods;
 
-  const [login, { error }] = useMutation(SINGIN_USER_MUTATION, {
+  const [login] = useMutation(SINGIN_USER_MUTATION, {
     onCompleted: () => navigate("/home"),
   });
 
@@ -35,11 +35,6 @@ export const Signin = () => {
     });
 
     auth.login(authData.data.login.token);
-
-    if (error) {
-      console.log("SIGNIN ERROR");
-      console.log(error);
-    }
   };
 
   return (
