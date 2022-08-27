@@ -4,13 +4,18 @@ export const types = `
     title: String!
     description: String!
     imageUrl: String
+    userId: String!
     createdAt: String!
     updatedAt: String!
   }
 `;
 
-export type PostType = {
+export interface Post {
+  id: string;
   title: string;
   description: string;
+  userId: string;
   imageUrl?: string;
-};
+  createdAt: string;
+  updatedAt: string;
+}

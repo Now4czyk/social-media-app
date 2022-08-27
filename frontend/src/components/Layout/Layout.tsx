@@ -9,9 +9,9 @@ interface LayoutProps {
   children?: ReactNode;
 }
 
-type Sites = "/home" | "/users" | "/form" | "/profile";
+type Sites = "/posts" | "/users" | "/form" | "/profile";
 
-const sites = ["/home", "/users", "/form", "/profile"];
+const sites = ["/posts", "/users", "/form", "/profile"];
 
 export const Layout = ({ children }: LayoutProps) => {
   const { data } = useQuery<AuthorizationQuery>(VERIFY);
@@ -54,13 +54,13 @@ export const Layout = ({ children }: LayoutProps) => {
               fontWeight: "600",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/posts")}
           >
             Boring App
           </Box>
           {data?.verify.isAuthorized && (
             <Tabs value={value} onChange={handleChange}>
-              <Tab label="Home" style={{ color: "white" }} value="/home" />
+              <Tab label="Posts" style={{ color: "white" }} value="/posts" />
               <Tab
                 label="Profile"
                 style={{ color: "white" }}

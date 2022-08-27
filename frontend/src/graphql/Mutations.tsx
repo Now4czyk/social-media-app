@@ -14,6 +14,19 @@ export const CREATE_USER_MUTATION = gql(`
   }
 `);
 
+export const CREATE_POST = gql(`
+  mutation CreatePost($title: String!, $description: String!, $imageUrl: String) {
+    createPost(title: $title, description: $description, imageUrl: $imageUrl) {
+      id
+      title
+      description
+      imageUrl
+      createdAt
+      updatedAt
+    }
+  }
+`);
+
 export const SINGIN_USER_MUTATION = gql(`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

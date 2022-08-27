@@ -15,7 +15,7 @@ export const types = `
   }
 `;
 
-export interface UserType {
+export interface User {
   email: string;
   password: string;
   confirmPassword: string;
@@ -23,9 +23,9 @@ export interface UserType {
   lastName: string;
 }
 
-export type Context = {
+export type Decoded = {
   userId: string;
   email: string;
   iat: number;
   exp: number;
-} | null;
+};

@@ -2,10 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormCreatePost.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/utils/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Post/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/middleware/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/Post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/User.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/FormInputText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/utils/FormInputText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Authentication.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +100,7 @@
     &quot;eslint.code.style.apply.dismiss&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.6.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.6.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kn/node/its-not-rocket-science-app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kn/node/MERN&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,15 +116,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/Forms" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/Forms/utils" />
       <recent name="$PROJECT_DIR$/frontend/src/routes" />
       <recent name="$PROJECT_DIR$/frontend/src/utils" />
       <recent name="$PROJECT_DIR$/frontend/src" />
-      <recent name="$PROJECT_DIR$/frontend/src/pages" />
-      <recent name="$PROJECT_DIR$/frontend" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -116,6 +145,8 @@
       <workItem from="1660458567360" duration="99000" />
       <workItem from="1660458675866" duration="36861000" />
       <workItem from="1661441978673" duration="10689000" />
+      <workItem from="1661619628057" duration="1688000" />
+      <workItem from="1661621370875" duration="4812000" />
     </task>
     <servers />
   </component>

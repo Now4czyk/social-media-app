@@ -26,6 +26,19 @@ export const FETCH_USER = gql(`
   }
 `);
 
+export const FETCH_POSTS = gql(`
+  query {
+    getAllPosts {
+      title
+      description
+      imageUrl
+      userId
+      createdAt
+      updatedAt
+    }
+  }
+`);
+
 export const VERIFY = gql(`
   query {   
     verify {

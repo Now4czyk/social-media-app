@@ -1,4 +1,4 @@
 export const queries = `
-  getAllPost : [Post!]!
+  getAllPosts : [Post!]!
   getPostById : Post!
 `;
