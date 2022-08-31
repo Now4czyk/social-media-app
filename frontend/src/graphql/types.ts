@@ -7,26 +7,33 @@ export interface User {
   updatedAt: string;
 }
 
-export interface UsersQuery {
+export interface GetAllUsersQuery {
   getAllUsers: Array<User>;
 }
 
-export interface UserQuery {
+export interface GetUserQuery {
   getUser: User;
 }
+export interface GetUserByIdQuery {
+  getUserById: User;
+}
 
-export interface Post {
+export interface PostPopulated {
   id: string;
   title: string;
   description: string;
-  userId: string;
+  user: User;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export interface PostsQuery {
-  getAllPosts: Array<Post>;
+export interface GetAllPostsQuery {
+  getAllPosts: Array<PostPopulated>;
+}
+
+export interface GetPostByIdQuery {
+  getPostById: PostPopulated;
 }
 
 export interface AuthorizationQuery {

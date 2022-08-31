@@ -5,8 +5,13 @@ import { decodeToken } from '../../middleware/decodeToken';
 import { Decoded } from '../User/types';
 
 const queries = {
-  getAllPosts: async () => await PostModel.find(),
-  getPostById: async (id: string) => await PostModel.findById(id),
+  getAllPosts: async (_: ParentNode, args: any, req: Request) => {
+    decodeToken(req);
+
+    return await PostModel.find().populate('user');
+  },
+  getPostById: async (_: ParentNode, args: { id: string }, req: Request) =>
+    await PostModel.findById({ _id: args.id }).populate('user'),
 };
 
 const mutations = {
@@ -17,13 +22,14 @@ const mutations = {
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
 
-    const user = await UserModel.findOne({ id: decodedUser.userId });
+    const user = await UserModel.findOne({ _id: decodedUser.userId });
+
     if (user) {
       const post = await new PostModel({
         title,
         description,
         imageUrl,
-        userId: user.id,
+        user: user.id,
       }).save();
 
       user.posts.push(post.id);

@@ -1,4 +1,4 @@
-import { User } from './types';
+import { Decoded, User } from './types';
 import { UserModel } from '../../models';
 import validator from 'validator';
 import { UserInputError, ValidationError } from 'apollo-server-express';
@@ -13,9 +13,16 @@ const queries = {
 
     return UserModel.find();
   },
-  getUser: async (_: ParentNode, args: any) =>
-    //TODO
-    await UserModel.findOne(),
+  getUser: async (_: ParentNode, args: any, req: Request) => {
+    const decodedUser = decodeToken(req) as Decoded;
+
+    return await UserModel.findOne({ _id: decodedUser.userId });
+  },
+  getUserById: async (_: ParentNode, args: { id: string }, req: Request) => {
+    decodeToken(req);
+
+    return await UserModel.findOne({ _id: args.id });
+  },
 };
 
 const mutations = {

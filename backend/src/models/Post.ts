@@ -6,7 +6,7 @@ const PostSchema = new Schema<Post>(
     title: { type: String, required: true },
     description: { type: String },
     imageUrl: { type: String },
-    userId: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { timestamps: true }
 );

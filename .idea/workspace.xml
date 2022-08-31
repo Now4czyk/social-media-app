@@ -2,39 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormCreatePost.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Forms/utils/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Post/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/PostDetails.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/UserDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/typeDefs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/models/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/Post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/Singin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Authentication/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/FormInputText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/utils/FormInputText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Mutations.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/graphql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Authentication.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +65,21 @@
                 </list>
               </option>
               <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="modules-memoization" />
+                    <option name="lastUsedInstant" value="1661884703" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="modify_readme" />
+                    <option name="lastUsedInstant" value="1661884702" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/../its-not-rocket-science-app" />
             </RecentBranchesForRepo>
           </list>
         </option>
@@ -147,6 +152,8 @@
       <workItem from="1661441978673" duration="10689000" />
       <workItem from="1661619628057" duration="1688000" />
       <workItem from="1661621370875" duration="4812000" />
+      <workItem from="1661884407627" duration="984000" />
+      <workItem from="1661963603650" duration="10668000" />
     </task>
     <servers />
   </component>

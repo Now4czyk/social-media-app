@@ -1,6 +1,7 @@
 import { ErrorResponse, onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
 import { ApolloClient, from, HttpLink, InMemoryCache } from "@apollo/client";
+import { auth } from "../../utils";
 
 type customError = {
   message: string;
@@ -12,6 +13,7 @@ const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
     const { message, extensions } = graphQLErrors[0];
     if (extensions.code === "GRAPHQL_VALIDATION_FAILED") {
       console.log("unauthorized");
+      auth.logout();
     }
     console.log("ERROR from App.tsx");
     console.log(message);
