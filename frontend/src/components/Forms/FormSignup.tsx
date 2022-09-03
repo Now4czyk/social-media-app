@@ -1,7 +1,6 @@
-import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { FormInputText } from "../Form/FormInputText";
+import { FormInputText } from "./utils/FormInputText";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER_MUTATION } from "../../graphql/Mutations";
@@ -22,7 +21,7 @@ const defaultValues: FormInputs = {
   confirmPassword: "",
 };
 
-export const Signup = () => {
+export const FormSignup = () => {
   const navigate = useNavigate();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;

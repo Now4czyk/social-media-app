@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/PostDetails.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/UserDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/Post/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/models/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/Post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Forms/FormSignin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/Navigation/UserPopover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Post/Post.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/Queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/client/client.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/graphql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Form.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/routeGuard.tsx" afterDir="false" />
@@ -31,6 +43,14 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="feature/add_CRUD_for_posts" />
+                    <option name="lastUsedInstant" value="1661612273" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1661612156" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="feature/adjust_FE_for_logging_our" />
                     <option name="lastUsedInstant" value="1661606594" />
                   </RecentBranch>
@@ -39,20 +59,27 @@
                     <option name="lastUsedInstant" value="1661592524" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1661592492" />
-                  </RecentBranch>
-                  <RecentBranch>
                     <option name="branchName" value="dev/basic_frontend_setup" />
                     <option name="lastUsedInstant" value="1660457673" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="chore/prettier_and_eslint_setup" />
-                    <option name="lastUsedInstant" value="1660416786" />
                   </RecentBranch>
                 </list>
               </option>
               <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="modules-memoization" />
+                    <option name="lastUsedInstant" value="1661884703" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="modify_readme" />
+                    <option name="lastUsedInstant" value="1661884702" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/../its-not-rocket-science-app" />
             </RecentBranchesForRepo>
           </list>
         </option>
@@ -78,7 +105,7 @@
     &quot;eslint.code.style.apply.dismiss&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.6.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.6.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kn/node/its-not-rocket-science-app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kn/node/MERN&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,15 +121,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/Forms" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/Forms/utils" />
       <recent name="$PROJECT_DIR$/frontend/src/routes" />
       <recent name="$PROJECT_DIR$/frontend/src/utils" />
       <recent name="$PROJECT_DIR$/frontend/src" />
-      <recent name="$PROJECT_DIR$/frontend/src/pages" />
-      <recent name="$PROJECT_DIR$/frontend" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -123,6 +150,10 @@
       <workItem from="1660458567360" duration="99000" />
       <workItem from="1660458675866" duration="36861000" />
       <workItem from="1661441978673" duration="10689000" />
+      <workItem from="1661619628057" duration="1688000" />
+      <workItem from="1661621370875" duration="4812000" />
+      <workItem from="1661884407627" duration="984000" />
+      <workItem from="1661963603650" duration="10668000" />
     </task>
     <servers />
   </component>

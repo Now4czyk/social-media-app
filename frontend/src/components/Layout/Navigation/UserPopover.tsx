@@ -1,11 +1,8 @@
 import {
-  Typography,
   Popover,
-  Button,
   Avatar,
   Box,
   List,
-  ListItem,
   Divider,
   ListItemText,
   ListItemButton,
@@ -13,13 +10,14 @@ import {
 import { useState, MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
 import { AuthorizationQuery, VERIFY } from "../../../graphql";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../../utils/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import { auth } from "utils/auth";
 
 export const UserPopover = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
   const { data } = useQuery<AuthorizationQuery>(VERIFY);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
@@ -70,6 +68,7 @@ export const UserPopover = () => {
                 onClick={() => {
                   auth.logout();
                   navigate("logout");
+                  navigate(0);
                 }}
               />
             ) : (

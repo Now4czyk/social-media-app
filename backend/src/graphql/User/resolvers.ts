@@ -1,11 +1,7 @@
-import { Context, UserType } from './types';
-import { User } from '../../models';
+import { Decoded, User } from './types';
+import { UserModel } from '../../models';
 import validator from 'validator';
-import {
-  AuthenticationError,
-  UserInputError,
-  ValidationError,
-} from 'apollo-server-express';
+import { UserInputError, ValidationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Request } from 'express';
@@ -15,21 +11,28 @@ const queries = {
   getAllUsers: async (_: ParentNode, args: any, req: Request) => {
     decodeToken(req);
 
-    return User.find();
+    return UserModel.find();
   },
-  getUser: async (_: ParentNode, args: any) =>
-    //TODO
-    await User.findOne(),
+  getUser: async (_: ParentNode, args: any, req: Request) => {
+    const decodedUser = decodeToken(req) as Decoded;
+
+    return await UserModel.findOne({ _id: decodedUser.userId });
+  },
+  getUserById: async (_: ParentNode, args: { id: string }, req: Request) => {
+    decodeToken(req);
+
+    return await UserModel.findOne({ _id: args.id }).populate('posts');
+  },
 };
 
 const mutations = {
   createUser: async (
     _: ParentNode,
-    { firstName, lastName, password, confirmPassword, email }: UserType
+    { firstName, lastName, password, confirmPassword, email }: User
   ) => {
     const errors = [];
 
-    const user = await User.findOne({ email });
+    const user = await UserModel.findOne({ email });
     if (user) {
       throw new ValidationError('Email already assigned to an account');
     }
@@ -73,7 +76,7 @@ const mutations = {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const newUser = await new User({
+    const newUser = await new UserModel({
       firstName,
       lastName,
       email,
@@ -84,10 +87,10 @@ const mutations = {
   },
   login: async (
     _: ParentNode,
-    { email, password }: Pick<UserType, 'email' | 'password'>,
+    { email, password }: Pick<User, 'email' | 'password'>,
     req: Request
   ) => {
-    const user = await User.findOne({ email });
+    const user = await UserModel.findOne({ email });
     if (!user) throw new ValidationError('Email is invalid');
 
     const isEqual = await bcrypt.compare(password, user!.password);

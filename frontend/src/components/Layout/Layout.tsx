@@ -1,28 +1,28 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from "react";
 import { AppBar, Box, Container, Tab, Tabs } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { AuthorizationQuery, VERIFY } from "../../graphql";
 import { UserPopover } from "./Navigation/UserPopover";
+import { auth } from "../../utils";
 
 interface LayoutProps {
   children?: ReactNode;
 }
 
-type Sites = "/home" | "/users" | "/form" | "/profile";
+type Sites = "/posts" | "/users" | "/profile";
 
-const sites = ["/home", "/users", "/form", "/profile"];
+const sites = ["/posts", "/users", "/profile"];
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { data } = useQuery<AuthorizationQuery>(VERIFY);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [value, setValue] = useState<Sites>(location.pathname as Sites);
+  const site = sites.find((site) => location.pathname.includes(site));
+
+  const [value, setValue] = useState<Sites>(site as Sites);
 
   useEffect(() => {
-    setValue(location.pathname as Sites);
-  }, [location.pathname]);
+    setValue(site as Sites);
+  }, [location.pathname, site]);
 
   const handleChange = (event: ChangeEvent<{}>, value: string) => {
     setValue(value as Sites);
@@ -54,13 +54,13 @@ export const Layout = ({ children }: LayoutProps) => {
               fontWeight: "600",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/posts")}
           >
             Boring App
           </Box>
-          {data?.verify.isAuthorized && (
+          {auth.getToken() && (
             <Tabs value={value} onChange={handleChange}>
-              <Tab label="Home" style={{ color: "white" }} value="/home" />
+              <Tab label="Posts" style={{ color: "white" }} value="/posts" />
               <Tab
                 label="Profile"
                 style={{ color: "white" }}

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { FormInputText } from "../Form/FormInputText";
+import { FormInputText } from "./utils/FormInputText";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation, useQuery } from "@apollo/client";
-import { SINGIN_USER_MUTATION } from "graphql/Mutations";
+import { useMutation } from "@apollo/client";
+import { SINGIN_USER_MUTATION } from "../../graphql/Mutations";
 import { auth } from "../../utils/auth";
 
 interface FormInputs {
@@ -17,14 +16,12 @@ const defaultValues: FormInputs = {
   password: "",
 };
 
-export const Signin = () => {
+export const FormSignin = () => {
   const navigate = useNavigate();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError } = methods;
 
-  const [login] = useMutation(SINGIN_USER_MUTATION, {
-    onCompleted: () => navigate("/home"),
-  });
+  const [login] = useMutation(SINGIN_USER_MUTATION);
 
   const onSubmit = async ({ password, email }: FormInputs) => {
     const authData = await login({
@@ -35,6 +32,8 @@ export const Signin = () => {
     });
 
     auth.login(authData.data.login.token);
+    navigate("/posts");
+    navigate(0);
   };
 
   return (
