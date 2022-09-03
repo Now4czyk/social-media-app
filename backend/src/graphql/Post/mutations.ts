@@ -8,4 +8,11 @@ export const mutations = `
   deletePost(
     id: ID!
   ): Post
+  
+  updatePost(
+    id: ID!
+    title: String!
+    description: String!
+    imageUrl: String
+  ): Post
 `;

@@ -9,7 +9,7 @@ import {
 } from "../graphql";
 import jwt_decode from "jwt-decode";
 import { auth, Decoded } from "../utils";
-import { Clear } from "@mui/icons-material";
+import { Clear, Edit } from "@mui/icons-material";
 
 export const PostDetails = () => {
   const params = useParams();
@@ -26,18 +26,20 @@ export const PostDetails = () => {
 
   return (
     <Box>
-      {" "}
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography> POST DETAILS</Typography>
         {jwt_decode<Decoded>(auth.getToken() || "").userId ===
           data?.getPostById.user.id && (
-          <Clear
-            sx={{ cursor: "pointer" }}
-            onClick={() => {
-              deletePost();
-              navigate(0);
-            }}
-          />
+          <Box>
+            <Edit />
+            <Clear
+              sx={{ cursor: "pointer" }}
+              onClick={() => {
+                deletePost();
+                navigate(0);
+              }}
+            />
+          </Box>
         )}
       </Box>
       <Typography>PostId: {data?.getPostById.id}</Typography>

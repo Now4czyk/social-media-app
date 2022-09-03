@@ -73,6 +73,23 @@ const mutations = {
 
     return post;
   },
+
+  updatePost: async (
+    _: ParentNode,
+    { title, description, imageUrl, id }: Post & { id: string },
+    req: Request
+  ) => {
+    const decodedUser = decodeToken(req) as Decoded;
+    const post = await PostModel.findOne({ _id: id }).populate('user');
+
+    if (post?.user.id === decodedUser.userId) {
+      post?.title = title;
+      post?.title = title;
+      post?.title = title;
+    }
+
+    return post;
+  },
 };
 
 export const resolvers = { queries, mutations };
