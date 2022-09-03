@@ -7,6 +7,16 @@ export interface User {
   updatedAt: string;
 }
 
+export interface UserPopulated {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  posts: Array<PostPopulated>;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface GetAllUsersQuery {
   getAllUsers: Array<User>;
 }
@@ -15,7 +25,7 @@ export interface GetUserQuery {
   getUser: User;
 }
 export interface GetUserByIdQuery {
-  getUserById: User;
+  getUserById: UserPopulated;
 }
 
 export interface PostPopulated {

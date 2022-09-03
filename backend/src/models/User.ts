@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
+import { User } from '../graphql/User/types';
 
-const UserSchema = new Schema(
+const UserSchema = new Schema<User>(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },

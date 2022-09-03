@@ -3,15 +3,18 @@ import { PostModel, UserModel } from '../../models';
 import { Request } from 'express';
 import { decodeToken } from '../../middleware/decodeToken';
 import { Decoded } from '../User/types';
-
+import { remove } from 'lodash';
 const queries = {
   getAllPosts: async (_: ParentNode, args: any, req: Request) => {
     decodeToken(req);
 
     return await PostModel.find().populate('user');
   },
-  getPostById: async (_: ParentNode, args: { id: string }, req: Request) =>
-    await PostModel.findById({ _id: args.id }).populate('user'),
+  getPostById: async (_: ParentNode, args: { id: string }, req: Request) => {
+    decodeToken(req);
+
+    return await PostModel.findById({ _id: args.id }).populate('user');
+  },
 };
 
 const mutations = {
@@ -53,6 +56,22 @@ const mutations = {
       createdAt: 'String!',
       updatedAt: 'String!',
     };
+  },
+
+  deletePost: async (_: ParentNode, { id }: { id: string }, req: Request) => {
+    const decodedUser = decodeToken(req) as Decoded;
+    const post = await PostModel.findOne({ _id: id }).populate('user');
+
+    if (post?.user.id === decodedUser.userId) {
+      await PostModel.deleteOne({ _id: id });
+      const user = await UserModel.findOne({
+        _id: decodedUser.userId,
+      }).populate('posts');
+      remove(user?.posts || [], (post) => post.id === id);
+      await user?.save();
+    }
+
+    return post;
   },
 };
 

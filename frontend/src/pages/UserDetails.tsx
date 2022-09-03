@@ -3,6 +3,7 @@ import { Avatar, Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { FETCH_USER_BY_ID, GetUserByIdQuery } from "../graphql";
+import { PostTile } from "../components/PostTile";
 
 export const UserDetails = () => {
   const params = useParams();
@@ -25,6 +26,21 @@ export const UserDetails = () => {
         Updated at:
         {" " + new Date(parseInt(data?.getUserById.updatedAt || "")).toString()}
       </Typography>
+      {data?.getUserById.posts.map((post) => (
+        <PostTile
+          post={{
+            ...post,
+            user: {
+              email: data?.getUserById.email,
+              firstName: data?.getUserById.firstName,
+              lastName: data?.getUserById.lastName,
+              id: data?.getUserById.id,
+              createdAt: data?.getUserById.createdAt,
+              updatedAt: data?.getUserById.updatedAt,
+            },
+          }}
+        />
+      ))}
     </Box>
   );
 };

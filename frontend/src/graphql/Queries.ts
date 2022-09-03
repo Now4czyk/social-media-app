@@ -33,6 +33,14 @@ export const FETCH_USER_BY_ID = gql(`
       email
       firstName
       lastName
+      posts {
+          id
+          title
+          description
+          imageUrl
+          createdAt
+          updatedAt
+      }
       createdAt
       updatedAt
     }

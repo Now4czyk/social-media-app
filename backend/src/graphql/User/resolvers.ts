@@ -21,7 +21,7 @@ const queries = {
   getUserById: async (_: ParentNode, args: { id: string }, req: Request) => {
     decodeToken(req);
 
-    return await UserModel.findOne({ _id: args.id });
+    return await UserModel.findOne({ _id: args.id }).populate('posts');
   },
 };
 

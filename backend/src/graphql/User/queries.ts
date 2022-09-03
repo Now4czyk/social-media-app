@@ -5,5 +5,5 @@ export const queries = `
   
   getUserById(
     id: ID!
-  ): User
+  ): UserPopulated
 `;

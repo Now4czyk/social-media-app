@@ -24,7 +24,7 @@ export const FormCreatePost = () => {
 
   const [createPost] = useMutation(CREATE_POST, {
     onCompleted: () => {
-      navigate("/posts");
+      navigate(0);
       reset();
     },
   });

@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { User } from '../User/types';
 
 export const types = `
   type Post {
@@ -16,7 +16,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  user: Schema.Types.ObjectId;
+  user: User;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;
