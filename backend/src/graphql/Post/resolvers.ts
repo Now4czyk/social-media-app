@@ -83,9 +83,10 @@ const mutations = {
     const post = await PostModel.findOne({ _id: id }).populate('user');
 
     if (post?.user.id === decodedUser.userId) {
-      post?.title = title;
-      post?.title = title;
-      post?.title = title;
+      post.title = title ? title : post.title;
+      post.description = description ? description : post.description;
+      post.imageUrl = imageUrl ? imageUrl : post.imageUrl;
+      await post.save();
     }
 
     return post;

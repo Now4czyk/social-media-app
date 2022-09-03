@@ -35,10 +35,23 @@ export const CREATE_POST = gql(`
   }
 `);
 
+export const UPDATE_POST = gql(`
+  mutation UpdatePost($postId: ID!, $title: String!, $description: String!, $imageUrl: String) {
+    updatePost(id: $postId, title: $title, description: $description, imageUrl: $imageUrl) {
+      id
+      title
+      description
+      imageUrl
+      createdAt
+      updatedAt
+    }
+  }
+`);
+
 export const DELETE_POST_MUTATION = gql(`
-  mutation DeletePost($deletePostId: ID!) {
-    deletePost(id: $deletePostId) {
-        id
+  mutation DeletePost($postId: ID!) {
+    deletePost(id: $postId) {
+      id
     }
   }
 `);

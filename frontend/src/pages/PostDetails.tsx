@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
@@ -10,17 +10,19 @@ import {
 import jwt_decode from "jwt-decode";
 import { auth, Decoded } from "../utils";
 import { Clear, Edit } from "@mui/icons-material";
+import { FormUpdatePost } from "../components/Forms/FormUpdatePost";
 
 export const PostDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [editMode, setEditMode] = useState(false);
 
   const { data } = useQuery<GetPostByIdQuery>(FETCH_POST_BY_ID, {
     variables: { postId: params.postId },
   });
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     variables: {
-      deletePostId: params.postId,
+      postId: params.postId,
     },
   });
 
@@ -31,7 +33,7 @@ export const PostDetails = () => {
         {jwt_decode<Decoded>(auth.getToken() || "").userId ===
           data?.getPostById.user.id && (
           <Box>
-            <Edit />
+            {!editMode && <Edit onClick={() => setEditMode(true)} />}
             <Clear
               sx={{ cursor: "pointer" }}
               onClick={() => {
@@ -42,16 +44,29 @@ export const PostDetails = () => {
           </Box>
         )}
       </Box>
-      <Typography>PostId: {data?.getPostById.id}</Typography>
-      <Typography>Title: {data?.getPostById.title}</Typography>
-      <Typography>Description: {data?.getPostById.description}</Typography>
-      <Typography>ImageUrl: {data?.getPostById.imageUrl}</Typography>
-      <Typography>
-        Creator First Name: {data?.getPostById.user.firstName}
-      </Typography>
-      <Typography>
-        Creator Last Name: {data?.getPostById.user.lastName}
-      </Typography>
+      {editMode ? (
+        <FormUpdatePost
+          defaultValues={{
+            title: data?.getPostById.title || "",
+            description: data?.getPostById.description || "",
+            imageUrl: data?.getPostById.imageUrl || "",
+          }}
+          setEditMode={setEditMode}
+        />
+      ) : (
+        <>
+          <Typography>PostId: {data?.getPostById.id}</Typography>
+          <Typography>Title: {data?.getPostById.title}</Typography>
+          <Typography>Description: {data?.getPostById.description}</Typography>
+          <Typography>ImageUrl: {data?.getPostById.imageUrl}</Typography>
+          <Typography>
+            Creator First Name: {data?.getPostById.user.firstName}
+          </Typography>
+          <Typography>
+            Creator Last Name: {data?.getPostById.user.lastName}
+          </Typography>
+        </>
+      )}
     </Box>
   );
 };

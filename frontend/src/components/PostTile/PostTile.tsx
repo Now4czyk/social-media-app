@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST_MUTATION } from "../../graphql";
-import { Clear, Edit } from "@mui/icons-material";
+import { Clear } from "@mui/icons-material";
 import { auth, Decoded } from "../../utils";
 import jwt_decode from "jwt-decode";
 
@@ -18,7 +18,7 @@ export const PostTile: FC<PostTileProps> = ({
   const navigate = useNavigate();
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     variables: {
-      deletePostId: id,
+      postId: id,
     },
   });
 
@@ -33,7 +33,6 @@ export const PostTile: FC<PostTileProps> = ({
         </Typography>
         {jwt_decode<Decoded>(auth.getToken() || "").userId === user.id && (
           <Box>
-            <Edit />
             <Clear
               sx={{ cursor: "pointer" }}
               onClick={() => {
