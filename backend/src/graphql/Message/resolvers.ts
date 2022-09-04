@@ -1,4 +1,4 @@
-import { decodeToken } from '../../middleware';
+import { decodeToken } from '../../utils';
 import { MessagePopulated } from './types';
 import { MessageModel } from '../../models';
 import { Context, Decoded } from '../../types';

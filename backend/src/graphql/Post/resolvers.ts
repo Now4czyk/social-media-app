@@ -1,6 +1,6 @@
 import { PostPopulated } from './types';
 import { PostModel, UserModel } from '../../models';
-import { decodeToken } from '../../middleware';
+import { decodeToken } from '../../utils';
 import { remove } from 'lodash';
 import { Context, Decoded } from '../../types';
 

@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { Message } from "../components";
+import { Message } from "components";
 import { useMutation, useSubscription } from "@apollo/client";
 import {
-  CREATE_MESSAGE_MUTATION,
-  GetAllMessagesSubscription,
-} from "../graphql";
-import { FETCH_MESSAGES_SUBSCRIPTION } from "../graphql/Subscriptions";
+  CREATE_MESSAGE,
+  GetAllMessages,
+  FETCH_MESSAGES,
+} from "graphql/Message";
 
 export const Forum = () => {
   const [content, setContent] = useState<string>("");
-  const { data } = useSubscription<GetAllMessagesSubscription>(
-    FETCH_MESSAGES_SUBSCRIPTION
-  );
+  const { data } = useSubscription<GetAllMessages>(FETCH_MESSAGES);
 
-  const [createMessage] = useMutation(CREATE_MESSAGE_MUTATION, {
+  const [createMessage] = useMutation(CREATE_MESSAGE, {
     onCompleted: () => {
       setContent("");
     },

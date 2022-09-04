@@ -1,12 +1,12 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
-import { FETCH_USER, GetUserQuery } from "../graphql";
+import { FETCH_USER, GetUser } from "graphql/User";
 import { useState } from "react";
 import { Edit } from "@mui/icons-material";
-import { FormUpdateUser } from "../components/Forms/FormUpdateUser";
+import { FormUpdateUser } from "components";
 
 export const Profile = () => {
-  const { data } = useQuery<GetUserQuery>(FETCH_USER);
+  const { data } = useQuery<GetUser>(FETCH_USER);
   const [editMode, setEditMode] = useState(false);
 
   return (

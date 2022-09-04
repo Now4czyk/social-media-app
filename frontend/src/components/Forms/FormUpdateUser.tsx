@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { UPDATE_USER } from "../../graphql";
+import { UPDATE_USER } from "graphql/User";
 import { Box, Button } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";

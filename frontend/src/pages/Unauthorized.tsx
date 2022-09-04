@@ -1,3 +1,1 @@
-export const Unauthorized = () => {
-  return <div>UNAUTHORIZED</div>;
-};
+export const Unauthorized = () => <div>UNAUTHORIZED</div>;

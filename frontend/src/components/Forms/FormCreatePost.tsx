@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { FormInputText } from "./utils/FormInputText";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CREATE_POST } from "graphql/Mutations";
+import { CREATE_POST } from "graphql/Post";
 
 interface FormInputs {
   title: string;

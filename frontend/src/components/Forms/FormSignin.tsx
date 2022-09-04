@@ -1,10 +1,10 @@
 import { Box, Typography, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { FormInputText } from "./utils/FormInputText";
+import { FormInputText } from "./utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { SINGIN_USER_MUTATION } from "../../graphql/Mutations";
-import { auth } from "../../utils/auth";
+import { SINGIN_USER } from "graphql/User";
+import { auth } from "utils";
 
 interface FormInputs {
   email: string;
@@ -19,9 +19,9 @@ const defaultValues: FormInputs = {
 export const FormSignin = () => {
   const navigate = useNavigate();
   const methods = useForm<FormInputs>({ defaultValues });
-  const { handleSubmit, control, setError } = methods;
+  const { handleSubmit, control } = methods;
 
-  const [login] = useMutation(SINGIN_USER_MUTATION);
+  const [login] = useMutation(SINGIN_USER);
 
   const onSubmit = async ({ password, email }: FormInputs) => {
     const authData = await login({

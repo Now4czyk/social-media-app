@@ -9,13 +9,13 @@ import {
 } from "@mui/material";
 import { useState, MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
-import { AuthorizationQuery, VERIFY } from "../../../graphql";
+import { VERIFY, Verification } from "graphql/Authorization";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "utils/auth";
 
 export const UserPopover = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
-  const { data } = useQuery<AuthorizationQuery>(VERIFY);
+  const { data } = useQuery<Verification>(VERIFY);
   const navigate = useNavigate();
   const location = useLocation();
 

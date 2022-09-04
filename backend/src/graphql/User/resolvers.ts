@@ -4,7 +4,7 @@ import validator from 'validator';
 import { UserInputError, ValidationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { decodeToken } from '../../middleware';
+import { decodeToken } from '../../utils';
 import { Context, Decoded } from '../../types';
 
 const queries = {

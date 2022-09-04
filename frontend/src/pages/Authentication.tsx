@@ -1,9 +1,8 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import { FormControl } from "@mui/material";
-import { FormSignup, FormSignin } from "../components/Forms";
+import { FormSignup, FormSignin } from "components";
 
-const Authentication = () => {
+export const Authentication = () => {
   const isSignIn = useLocation().pathname.includes("signin");
   const Form = () => (isSignIn ? <FormSignin /> : <FormSignup />);
 
@@ -13,5 +12,3 @@ const Authentication = () => {
     </FormControl>
   );
 };
-
-export default Authentication;

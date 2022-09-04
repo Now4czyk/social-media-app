@@ -1,13 +1,12 @@
-import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { FETCH_USER_BY_ID, GetUserByIdQuery } from "../graphql";
-import { PostTile } from "../components/PostTile";
+import { FETCH_USER_BY_ID, GetUserById } from "graphql/User";
+import { PostTile } from "components";
 
 export const UserDetails = () => {
   const params = useParams();
-  const { data } = useQuery<GetUserByIdQuery>(FETCH_USER_BY_ID, {
+  const { data } = useQuery<GetUserById>(FETCH_USER_BY_ID, {
     variables: { userId: params.userId },
   });
 

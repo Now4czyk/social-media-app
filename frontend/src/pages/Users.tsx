@@ -1,9 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { FETCH_USERS, GetAllUsersQuery } from "../graphql";
+import { FETCH_USERS, GetAllUsers } from "graphql/User";
 import { CircularProgress } from "@mui/material";
 
 export const Users = () => {
-  const { loading, data } = useQuery<GetAllUsersQuery>(FETCH_USERS);
+  const { loading, data } = useQuery<GetAllUsers>(FETCH_USERS);
 
   return (
     <div>

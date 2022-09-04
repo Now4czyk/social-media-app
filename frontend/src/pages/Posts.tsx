@@ -1,12 +1,10 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
-import { FormCreatePost } from "../components/Forms/FormCreatePost";
 import { useQuery } from "@apollo/client";
-import { FETCH_POSTS, GetAllPostsQuery } from "../graphql";
-import { PostTile } from "../components/PostTile";
+import { FETCH_POSTS, GetAllPosts } from "graphql/Post";
+import { PostTile, FormCreatePost } from "components";
 
 export const Posts = () => {
-  const { data } = useQuery<GetAllPostsQuery>(FETCH_POSTS);
+  const { data } = useQuery<GetAllPosts>(FETCH_POSTS);
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>

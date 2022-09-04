@@ -1,11 +1,12 @@
-import React, { FC } from "react";
-import { PostPopulated } from "../../graphql/types";
+import { FC } from "react";
+import { PostPopulated } from "graphql/Post";
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { DELETE_POST_MUTATION } from "../../graphql";
+import { DELETE_POST } from "graphql/Post";
 import { Clear } from "@mui/icons-material";
-import { auth, Decoded } from "../../utils";
+import { auth } from "utils";
+import { Decoded } from "types";
 import jwt_decode from "jwt-decode";
 
 interface PostTileProps {
@@ -16,7 +17,7 @@ export const PostTile: FC<PostTileProps> = ({
   post: { title, description, imageUrl, user, createdAt, id },
 }) => {
   const navigate = useNavigate();
-  const [deletePost] = useMutation(DELETE_POST_MUTATION, {
+  const [deletePost] = useMutation(DELETE_POST, {
     variables: {
       postId: id,
     },

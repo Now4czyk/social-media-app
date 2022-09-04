@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import {
-  DELETE_POST_MUTATION,
-  FETCH_POST_BY_ID,
-  GetPostByIdQuery,
-} from "../graphql";
+import { DELETE_POST, FETCH_POST_BY_ID, GetPostById } from "graphql/Post";
 import jwt_decode from "jwt-decode";
-import { auth, Decoded } from "../utils";
+import { auth } from "utils";
+import { Decoded } from "types";
 import { Clear, Edit } from "@mui/icons-material";
-import { FormUpdatePost } from "../components/Forms/FormUpdatePost";
+import { FormUpdatePost } from "components";
 
 export const PostDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [editMode, setEditMode] = useState(false);
 
-  const { data } = useQuery<GetPostByIdQuery>(FETCH_POST_BY_ID, {
+  const { data } = useQuery<GetPostById>(FETCH_POST_BY_ID, {
     variables: { postId: params.postId },
   });
-  const [deletePost] = useMutation(DELETE_POST_MUTATION, {
+  const [deletePost] = useMutation(DELETE_POST, {
     variables: {
       postId: params.postId,
     },

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { FormInputText } from "./utils/FormInputText";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER_MUTATION } from "../../graphql/Mutations";
+import { CREATE_USER } from "graphql/User";
 
 interface FormInputs {
   firstName: string;
@@ -26,7 +26,7 @@ export const FormSignup = () => {
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;
 
-  const [createUser] = useMutation(CREATE_USER_MUTATION, {
+  const [createUser] = useMutation(CREATE_USER, {
     onCompleted: () => navigate("/signin"),
   });
 

@@ -1,4 +1,4 @@
-import { decodeToken } from '../../middleware/decodeToken';
+import { decodeToken } from '../../utils/decodeToken';
 import { Context } from '../../types';
 
 const queries = {
