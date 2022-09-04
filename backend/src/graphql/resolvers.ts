@@ -2,7 +2,6 @@ import { User } from './User';
 import { Authorization } from './Authorization';
 import { Post } from './Post';
 import { Message } from './Message';
-import { Context } from '../utils';
 
 export const resolvers = {
   Query: {

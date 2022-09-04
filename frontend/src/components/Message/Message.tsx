@@ -3,6 +3,7 @@ import { Avatar, Box, Typography } from "@mui/material";
 import { MessagePopulated } from "../../graphql";
 import jwt_decode from "jwt-decode";
 import { auth, Decoded } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 interface MessageProps {
   message: MessagePopulated;
@@ -16,6 +17,7 @@ export const Message = ({
   },
 }: MessageProps) => {
   const isCreator = jwt_decode<Decoded>(auth.getToken() || "").userId === id;
+  const navigate = useNavigate();
 
   const date = new Date(parseInt(createdAt)).toLocaleTimeString("pl", {
     hour: "2-digit",
@@ -25,9 +27,14 @@ export const Message = ({
   return (
     <Box sx={{ display: "flex", justifyContent: isCreator ? "right" : "left" }}>
       {!isCreator && (
-        <Avatar sx={{ textTransform: "uppercase", marginRight: "0.5rem" }}>{`${
-          firstName[0] + lastName[0]
-        }`}</Avatar>
+        <Avatar
+          onClick={() => navigate(`/users/${id}`)}
+          sx={{
+            cursor: "pointer",
+            textTransform: "uppercase",
+            marginRight: "0.5rem",
+          }}
+        >{`${firstName[0] + lastName[0]}`}</Avatar>
       )}
       {isCreator && (
         <Typography sx={{ margin: "auto 0.2rem" }}>{date}</Typography>

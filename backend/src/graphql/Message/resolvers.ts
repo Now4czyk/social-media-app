@@ -6,8 +6,18 @@ import { Context } from '../../utils';
 
 const subscriptions = {
   getAllMessages: {
-    subscribe: (_: ParentNode, args: any, { pubSub }: Context) =>
-      pubSub.asyncIterator('NEW_MESSAGE'),
+    subscribe: (_: ParentNode, args: any, { pubSub }: Context) => {
+      //immediate data fetch without waiting until user send a message
+      setTimeout(
+        async () =>
+          pubSub.publish('NEW_MESSAGE', {
+            getAllMessages: await MessageModel.find().populate('user'),
+          }),
+        0
+      );
+
+      return pubSub.asyncIterator('NEW_MESSAGE');
+    },
   },
 };
 

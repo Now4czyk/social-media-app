@@ -4,3 +4,8 @@ export type Decoded = {
   iat: number;
   exp: number;
 };
+
+export interface CustomError {
+  message: string;
+  id: string;
+}

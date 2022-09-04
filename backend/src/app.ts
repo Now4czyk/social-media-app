@@ -10,18 +10,17 @@ import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
+import { Context } from './utils';
 
 dotenv.config();
 
 const app = express();
 
-//websockets
 const httpServer = createServer(app);
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: '/graphql',
 });
-const schema = makeExecutableSchema({ typeDefs, resolvers });
+const schema = makeExecutableSchema<Context>({ typeDefs, resolvers });
 const pubSub = new PubSub();
 const serverCleanup = useServer(
   {
@@ -35,8 +34,7 @@ const serverCleanup = useServer(
 
 const startServer = async () => {
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
     csrfPrevention: true,
     cache: 'bounded',
     introspection: true,
@@ -59,13 +57,10 @@ const startServer = async () => {
     ],
   });
 
-  //starting server
   await server.start();
-  //utils
 
-  //starting graphQL API
-  server.applyMiddleware({ app, path: '/graphql' });
-  //connecting graphQL API
+  server.applyMiddleware({ app });
+
   await mongoose.connect(process.env.MONGO_URI!);
 
   httpServer.listen({ port: process.env.PORT }, () => {

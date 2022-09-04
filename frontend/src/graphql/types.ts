@@ -48,12 +48,11 @@ export interface GetPostByIdQuery {
 
 export interface MessagePopulated {
   content: string;
-  user: User;
+  user: Pick<User, "id" | "firstName" | "lastName">;
   createdAt: string;
-  updatedAt: string;
 }
 
-export interface GetAllMessagesQuery {
+export interface GetAllMessagesSubscription {
   getAllMessages: Array<MessagePopulated>;
 }
 
