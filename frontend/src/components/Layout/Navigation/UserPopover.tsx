@@ -58,9 +58,6 @@ export const UserPopover = () => {
             />
           </ListItemButton>
           <Divider />
-          <ListItemButton divider disabled>
-            <ListItemText primary="Settings" />
-          </ListItemButton>
           <ListItemButton>
             {data?.verify.isAuthorized ? (
               <ListItemText

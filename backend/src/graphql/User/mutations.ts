@@ -11,4 +11,10 @@ export const mutations = `
     email: String!
     password: String!
   ): Token
+  
+  updateUser(
+    firstName: String!
+    lastName: String!
+    email: String!
+  ): User
 `;

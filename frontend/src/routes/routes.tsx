@@ -12,7 +12,6 @@ import {
   UserDetails,
   Forum,
 } from "pages";
-import React from "react";
 
 export const MainRoutes = () => (
   <Routes>

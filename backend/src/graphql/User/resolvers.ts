@@ -1,11 +1,12 @@
 import { Decoded, User } from './types';
-import { UserModel } from '../../models';
+import { PostModel, UserModel } from '../../models';
 import validator from 'validator';
 import { UserInputError, ValidationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { decodeToken } from '../../middleware/decodeToken';
 import { Context } from '../../utils';
+import { Post } from '../Post/types';
 
 const queries = {
   getAllUsers: async (_: ParentNode, args: any, { req }: Context) => {
@@ -89,6 +90,7 @@ const mutations = {
 
     return newUser;
   },
+
   login: async (
     _: ParentNode,
     { email, password }: Pick<User, 'email' | 'password'>,
@@ -110,6 +112,54 @@ const mutations = {
     );
 
     return { token };
+  },
+
+  updateUser: async (
+    _: ParentNode,
+    {
+      firstName,
+      lastName,
+      email,
+    }: Pick<User, 'firstName' | 'lastName' | 'email'>,
+    { req }: Context
+  ) => {
+    const decodedUser = decodeToken(req) as Decoded;
+
+    const user = await UserModel.findOne({ _id: decodedUser.userId });
+    const errors = [];
+
+    if (!validator.isLength(firstName, { min: 1 }))
+      errors.push({
+        message: 'First name not valid',
+        id: 'firstName',
+      });
+
+    if (!validator.isLength(lastName, { min: 1 }))
+      errors.push({
+        message: 'Last name not valid',
+        id: 'lastName',
+      });
+
+    if (!validator.isEmail(email))
+      errors.push({
+        message: 'Email not valid',
+        id: 'email',
+      });
+
+    if (errors.length)
+      throw new UserInputError('Failed to create a user', {
+        ...errors,
+      });
+
+    if (user) {
+      user.firstName = firstName;
+      user.lastName = lastName;
+      user.email = email;
+
+      await user.save();
+    }
+
+    return user;
   },
 };
 
