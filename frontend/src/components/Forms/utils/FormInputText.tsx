@@ -1,4 +1,4 @@
-import React from "react";
+import { HTMLInputTypeAttribute } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { TextField } from "@mui/material";
 
@@ -6,10 +6,15 @@ export interface FormInputProps {
   name: string;
   control: any;
   label: string;
-  setValue?: any;
+  type?: HTMLInputTypeAttribute;
 }
 
-export const FormInputText = ({ name, control, label }: FormInputProps) => (
+export const FormInputText = ({
+  name,
+  control,
+  label,
+  type,
+}: FormInputProps) => (
   <Controller
     name={name}
     control={control}
@@ -17,6 +22,7 @@ export const FormInputText = ({ name, control, label }: FormInputProps) => (
       <TextField
         helperText={error ? error.message : null}
         error={!!error}
+        type={type}
         onChange={onChange}
         value={value}
         fullWidth

@@ -85,8 +85,18 @@ export const FormSignup = () => {
     >
       <FormInputText name="firstName" control={control} label="First name" />
       <FormInputText name="lastName" control={control} label="Last name" />
-      <FormInputText name="email" control={control} label="Email" />
-      <FormInputText name="password" control={control} label="Password" />
+      <FormInputText
+        name="email"
+        type="email"
+        control={control}
+        label="Email"
+      />
+      <FormInputText
+        name="password"
+        type="password"
+        control={control}
+        label="Password"
+      />
       <FormInputText
         name="confirmPassword"
         control={control}

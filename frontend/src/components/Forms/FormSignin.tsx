@@ -46,8 +46,18 @@ export const FormSignin = () => {
         width: "15rem",
       }}
     >
-      <FormInputText name="email" control={control} label="Email" />
-      <FormInputText name="password" control={control} label="Password" />
+      <FormInputText
+        name="email"
+        type="email"
+        control={control}
+        label="Email"
+      />
+      <FormInputText
+        name="password"
+        type="password"
+        control={control}
+        label="Password"
+      />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
         Sign in
       </Button>
