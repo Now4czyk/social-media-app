@@ -99,6 +99,7 @@ export const FormSignup = () => {
       />
       <FormInputText
         name="confirmPassword"
+        type="password"
         control={control}
         label="Confirm password"
       />

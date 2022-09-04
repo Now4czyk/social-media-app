@@ -55,3 +55,15 @@ export const DELETE_POST_MUTATION = gql(`
     }
   }
 `);
+
+export const CREATE_MESSAGE_MUTATION = gql(`
+  mutation CreateMessage($content: String!) {
+    createMessage(content: $content) {
+      id
+      content
+      user
+      createdAt
+      updatedAt
+    }
+  }
+`);

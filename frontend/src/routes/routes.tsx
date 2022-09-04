@@ -10,6 +10,7 @@ import {
   Profile,
   PostDetails,
   UserDetails,
+  Forum,
 } from "pages";
 import React from "react";
 
@@ -26,6 +27,7 @@ export const MainRoutes = () => (
     />
     <Route path="/posts" element={RouteGuard({ element: <Posts /> })} />
     <Route path="/profile" element={RouteGuard({ element: <Profile /> })} />
+    <Route path="/forum" element={RouteGuard({ element: <Forum /> })} />
     <Route
       path="/users/:userId"
       element={RouteGuard({ element: <UserDetails /> })}

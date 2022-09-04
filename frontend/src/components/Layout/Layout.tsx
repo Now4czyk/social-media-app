@@ -8,9 +8,9 @@ interface LayoutProps {
   children?: ReactNode;
 }
 
-type Sites = "/posts" | "/users" | "/profile";
+type Sites = "/posts" | "/users" | "/profile" | "/forum";
 
-const sites = ["/posts", "/users", "/profile"];
+const sites = ["/posts", "/users", "/profile", "/forum"];
 
 export const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
@@ -67,6 +67,7 @@ export const Layout = ({ children }: LayoutProps) => {
                 value="/profile"
               />
               <Tab label="Users" style={{ color: "white" }} value="/users" />
+              <Tab label="Forum" style={{ color: "white" }} value="/forum" />
             </Tabs>
           )}
         </Box>

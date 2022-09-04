@@ -25,7 +25,11 @@ const queries = {
 const mutations = {
   createPost: async (
     _: ParentNode,
-    { title, description, imageUrl }: Post,
+    {
+      title,
+      description,
+      imageUrl,
+    }: Pick<Post, 'title' | 'description' | 'imageUrl'>,
     { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
