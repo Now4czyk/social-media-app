@@ -83,6 +83,20 @@ export const FETCH_POSTS = gql(`
   }
 `);
 
+export const FETCH_MESSAGES = gql(`
+  query {
+    getAllMessages {
+      content
+      user {
+        id
+        firstName
+        lastName
+      }
+      createdAt
+    }
+  }
+`);
+
 export const VERIFY = gql(`
   query {   
     verify {

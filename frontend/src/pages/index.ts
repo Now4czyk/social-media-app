@@ -1,3 +1,4 @@
+export * from "./Forum";
 export * from "./Posts";
 export * from "./Users";
 export * from "./Logout";

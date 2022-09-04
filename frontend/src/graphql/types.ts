@@ -46,6 +46,17 @@ export interface GetPostByIdQuery {
   getPostById: PostPopulated;
 }
 
+export interface MessagePopulated {
+  content: string;
+  user: User;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface GetAllMessagesQuery {
+  getAllMessages: Array<MessagePopulated>;
+}
+
 export interface AuthorizationQuery {
   verify: {
     isAuthorized: boolean;
