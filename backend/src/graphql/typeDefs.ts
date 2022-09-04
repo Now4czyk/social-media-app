@@ -14,7 +14,6 @@ export const typeDefs = gql(`
     ${User.queries}
     ${Authorization.queries}
     ${Post.queries}
-    ${Message.queries}
   }
   type Mutation {
     ${User.mutations}

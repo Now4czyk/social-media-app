@@ -1,12 +1,11 @@
-import { Decoded, User } from './types';
-import { PostModel, UserModel } from '../../models';
+import { User } from './types';
+import { UserModel } from '../../models';
 import validator from 'validator';
 import { UserInputError, ValidationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { decodeToken } from '../../middleware/decodeToken';
-import { Context } from '../../utils';
-import { Post } from '../Post/types';
+import { decodeToken } from '../../middleware';
+import { Context, Decoded } from '../../types';
 
 const queries = {
   getAllUsers: async (_: ParentNode, args: any, { req }: Context) => {
@@ -17,7 +16,7 @@ const queries = {
   getUser: async (_: ParentNode, args: any, { req }: Context) => {
     const decodedUser = decodeToken(req) as Decoded;
 
-    return await UserModel.findOne({ _id: decodedUser.userId });
+    return UserModel.findOne({ _id: decodedUser.userId });
   },
   getUserById: async (
     _: ParentNode,
@@ -26,7 +25,7 @@ const queries = {
   ) => {
     decodeToken(req);
 
-    return await UserModel.findOne({ _id: args.id }).populate('posts');
+    return UserModel.findOne({ _id: args.id }).populate('posts');
   },
 };
 

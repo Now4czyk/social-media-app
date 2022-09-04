@@ -12,7 +12,7 @@ export const types = `
   }
 `;
 
-export interface Post {
+export interface PostPopulated {
   id: string;
   title: string;
   description: string;

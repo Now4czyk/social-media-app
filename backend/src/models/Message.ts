@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
-import { Message } from '../graphql/Message/types';
+import { MessagePopulated } from '../graphql/Message/types';
 
-const MessageSchema = new Schema<Message>(
+const MessageSchema = new Schema<MessagePopulated>(
   {
     content: { type: String, required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },

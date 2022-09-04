@@ -18,7 +18,7 @@ export const types = `
   }
 `;
 
-export interface Message {
+export interface MessagePopulated {
   id: string;
   content: string;
   user: User;
