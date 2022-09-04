@@ -21,4 +21,8 @@ export const typeDefs = gql(`
     ${Post.mutations}
     ${Message.mutations}
   }
+  
+  type Subscription {
+    ${Message.subscriptions}
+  }
 `);

@@ -3,10 +3,35 @@ import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { typeDefs, resolvers } from './graphql';
+import { PubSub } from 'graphql-subscriptions';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { createServer } from 'http';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { WebSocketServer } from 'ws';
+import { useServer } from 'graphql-ws/lib/use/ws';
 
 dotenv.config();
 
 const app = express();
+
+//websockets
+const httpServer = createServer(app);
+const wsServer = new WebSocketServer({
+  server: httpServer,
+  path: '/graphql',
+});
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+const pubSub = new PubSub();
+const serverCleanup = useServer(
+  {
+    schema,
+    context: () => ({
+      pubSub,
+    }),
+  },
+  wsServer
+);
 
 const startServer = async () => {
   const server = new ApolloServer({
@@ -17,8 +42,21 @@ const startServer = async () => {
     introspection: true,
     context: async ({ req }) => ({
       req,
+      pubSub,
     }),
-    // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup.dispose();
+            },
+          };
+        },
+      },
+      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+    ],
   });
 
   //starting server
@@ -30,8 +68,10 @@ const startServer = async () => {
   //connecting graphQL API
   await mongoose.connect(process.env.MONGO_URI!);
 
-  app.listen({ port: process.env.PORT }, () => {
-    console.log(process.env.PORT);
+  httpServer.listen({ port: process.env.PORT }, () => {
+    console.log(
+      `Server is now running on http://localhost:${process.env.PORT}${server.graphqlPath}`
+    );
   });
 };
 
