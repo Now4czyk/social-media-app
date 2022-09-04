@@ -23,7 +23,6 @@ export const FormInputText = ({
         type={type}
         helperText={error ? error.message : null}
         error={!!error}
-        type={type}
         onChange={onChange}
         value={value}
         fullWidth

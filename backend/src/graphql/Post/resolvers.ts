@@ -30,7 +30,7 @@ const mutations = {
       description,
       imageUrl,
     }: Pick<Post, 'title' | 'description' | 'imageUrl'>,
-    req: Request
+    { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
 
