@@ -4,21 +4,25 @@ import validator from 'validator';
 import { UserInputError, ValidationError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Request } from 'express';
 import { decodeToken } from '../../middleware/decodeToken';
+import { Context } from '../../utils';
 
 const queries = {
-  getAllUsers: async (_: ParentNode, args: any, req: Request) => {
+  getAllUsers: async (_: ParentNode, args: any, { req }: Context) => {
     decodeToken(req);
 
     return UserModel.find();
   },
-  getUser: async (_: ParentNode, args: any, req: Request) => {
+  getUser: async (_: ParentNode, args: any, { req }: Context) => {
     const decodedUser = decodeToken(req) as Decoded;
 
     return await UserModel.findOne({ _id: decodedUser.userId });
   },
-  getUserById: async (_: ParentNode, args: { id: string }, req: Request) => {
+  getUserById: async (
+    _: ParentNode,
+    args: { id: string },
+    { req }: Context
+  ) => {
     decodeToken(req);
 
     return await UserModel.findOne({ _id: args.id }).populate('posts');
@@ -88,7 +92,7 @@ const mutations = {
   login: async (
     _: ParentNode,
     { email, password }: Pick<User, 'email' | 'password'>,
-    req: Request
+    { req }: Context
   ) => {
     const user = await UserModel.findOne({ email });
     if (!user) throw new ValidationError('Email is invalid');

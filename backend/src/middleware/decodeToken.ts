@@ -3,8 +3,7 @@ import express from 'express';
 import { ValidationError } from 'apollo-server-express';
 
 export const decodeToken = (req: express.Request) => {
-  //@ts-ignore
-  const header = req.req.headers.authorization;
+  const header = req.headers.authorization;
 
   if (header) {
     try {

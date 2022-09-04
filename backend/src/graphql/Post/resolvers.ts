@@ -1,16 +1,21 @@
 import { Post } from './types';
 import { PostModel, UserModel } from '../../models';
-import { Request } from 'express';
 import { decodeToken } from '../../middleware/decodeToken';
 import { Decoded } from '../User/types';
 import { remove } from 'lodash';
+import { Context } from '../../utils';
+
 const queries = {
-  getAllPosts: async (_: ParentNode, args: any, req: Request) => {
+  getAllPosts: async (_: ParentNode, args: any, { req }: Context) => {
     decodeToken(req);
 
     return await PostModel.find().populate('user');
   },
-  getPostById: async (_: ParentNode, args: { id: string }, req: Request) => {
+  getPostById: async (
+    _: ParentNode,
+    args: { id: string },
+    { req }: Context
+  ) => {
     decodeToken(req);
 
     return await PostModel.findById({ _id: args.id }).populate('user');
@@ -21,7 +26,7 @@ const mutations = {
   createPost: async (
     _: ParentNode,
     { title, description, imageUrl }: Post,
-    req: Request
+    { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
 
@@ -58,7 +63,11 @@ const mutations = {
     };
   },
 
-  deletePost: async (_: ParentNode, { id }: { id: string }, req: Request) => {
+  deletePost: async (
+    _: ParentNode,
+    { id }: { id: string },
+    { req }: Context
+  ) => {
     const decodedUser = decodeToken(req) as Decoded;
     const post = await PostModel.findOne({ _id: id }).populate('user');
 
@@ -77,7 +86,7 @@ const mutations = {
   updatePost: async (
     _: ParentNode,
     { title, description, imageUrl, id }: Post & { id: string },
-    req: Request
+    { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
     const post = await PostModel.findOne({ _id: id }).populate('user');
