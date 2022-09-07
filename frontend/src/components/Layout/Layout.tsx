@@ -3,6 +3,8 @@ import { AppBar, Box, Container, Tab, Tabs } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserPopover } from "./Navigation";
 import { auth } from "utils";
+import useTranslation from "translations/hooks/useTranslations";
+import { useStore } from "../../store";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -15,6 +17,8 @@ const sites = ["/posts", "/users", "/profile", "/forum"];
 export const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { localization, changeLocale } = useStore();
 
   const site = sites.find((site) => location.pathname.includes(site));
 
@@ -60,7 +64,11 @@ export const Layout = ({ children }: LayoutProps) => {
           </Box>
           {auth.getToken() && (
             <Tabs value={value} onChange={handleChange}>
-              <Tab label="Posts" style={{ color: "white" }} value="/posts" />
+              <Tab
+                label={t("tabs.posts")}
+                style={{ color: "white" }}
+                value="/posts"
+              />
               <Tab
                 label="Profile"
                 style={{ color: "white" }}
@@ -71,7 +79,10 @@ export const Layout = ({ children }: LayoutProps) => {
             </Tabs>
           )}
         </Box>
-        <UserPopover />
+        <Box>
+          <button onClick={changeLocale}>{localization.locale}</button>
+          <UserPopover />
+        </Box>
       </AppBar>
       <Container sx={{ backgroundColor: "lightgray" }} fixed>
         {children}
