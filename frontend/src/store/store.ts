@@ -1,11 +1,11 @@
-import { Localization } from "../translations/types";
+import { Locale, Localization } from "../translations/types";
 import create from "zustand";
 import { defaultLocale } from "../translations/config";
 import translations from "../translations/locales";
 
 export interface State {
   readonly localization: Localization;
-  readonly changeLocale: () => void;
+  readonly changeLocale: (language: Locale) => void;
 }
 
 export const useStore = create<State>((set) => ({
@@ -13,17 +13,11 @@ export const useStore = create<State>((set) => ({
     locale: defaultLocale,
     translations: translations[defaultLocale],
   },
-  changeLocale: () =>
+  changeLocale: (language: Locale) =>
     set((state: State) => ({
-      localization:
-        state.localization.locale === defaultLocale
-          ? {
-              locale: "en",
-              translations: translations["en"],
-            }
-          : {
-              locale: defaultLocale,
-              translations: translations[defaultLocale],
-            },
+      localization: {
+        locale: language,
+        translations: translations["en"],
+      },
     })),
 }));

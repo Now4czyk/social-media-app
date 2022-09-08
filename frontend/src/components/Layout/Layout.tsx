@@ -5,6 +5,7 @@ import { UserPopover } from "./UserPopover";
 import { auth } from "utils";
 import useTranslation from "translations/hooks/useTranslations";
 import { useStore } from "store";
+import { LanguageSwitcher } from "../../translations/components";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -79,8 +80,8 @@ export const Layout = ({ children }: LayoutProps) => {
             </Tabs>
           )}
         </Box>
-        <Box>
-          <button onClick={changeLocale}>{localization.locale}</button>
+        <Box sx={{ display: "flex", columnGap: "2rem" }}>
+          <LanguageSwitcher />
           <UserPopover />
         </Box>
       </AppBar>
