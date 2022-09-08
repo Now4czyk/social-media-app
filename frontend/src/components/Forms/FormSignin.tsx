@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { SINGIN_USER } from "graphql/User";
 import { auth } from "utils";
+import useTranslation from "../../translations/hooks/useTranslations";
 
 interface FormInputs {
   email: string;
@@ -18,6 +19,7 @@ const defaultValues: FormInputs = {
 
 export const FormSignin = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control } = methods;
 
@@ -50,19 +52,20 @@ export const FormSignin = () => {
         name="email"
         type="email"
         control={control}
-        label="Email"
+        label={t("user.email")}
       />
       <FormInputText
         name="password"
         type="password"
         control={control}
-        label="Password"
+        label={t("form.password")}
       />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        Sign in
+        {t("actions.signin")}
       </Button>
       <Typography sx={{ fontSize: "0.9rem" }}>
-        New to Boring App? <Link to="/signup">Sing up</Link>
+        {t("messages.newUser")}
+        <Link to="/signup"> {t("actions.signup")}</Link>
       </Typography>
     </Box>
   );

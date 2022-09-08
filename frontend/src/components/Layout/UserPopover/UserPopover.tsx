@@ -10,14 +10,15 @@ import {
 import { useState, MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
 import { VERIFY, Verification } from "graphql/Authorization";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "utils/auth";
+import useTranslation from "translations/hooks/useTranslations";
 
 export const UserPopover = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
   const { data } = useQuery<Verification>(VERIFY);
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
@@ -53,7 +54,7 @@ export const UserPopover = () => {
         >
           <ListItemButton>
             <ListItemText
-              primary="Profile"
+              primary={t("tabs.profile")}
               onClick={() => navigate("profile")}
             />
           </ListItemButton>
@@ -61,7 +62,7 @@ export const UserPopover = () => {
           <ListItemButton>
             {data?.verify.isAuthorized ? (
               <ListItemText
-                primary="Logout"
+                primary={t("actions.logout")}
                 onClick={() => {
                   auth.logout();
                   navigate("logout");
@@ -70,7 +71,7 @@ export const UserPopover = () => {
               />
             ) : (
               <ListItemText
-                primary="Login"
+                primary={t("actions.signin")}
                 onClick={() => navigate("signin")}
               />
             )}

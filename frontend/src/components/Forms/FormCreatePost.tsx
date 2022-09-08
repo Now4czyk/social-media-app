@@ -1,9 +1,10 @@
 import { Box, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { FormInputText } from "./utils/FormInputText";
+import { FormInputText } from "./utils";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "graphql/Post";
+import useTranslation from "../../translations/hooks/useTranslations";
 
 interface FormInputs {
   title: string;
@@ -19,6 +20,7 @@ const defaultValues: FormInputs = {
 
 export const FormCreatePost = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState, reset } = methods;
 
@@ -32,7 +34,7 @@ export const FormCreatePost = () => {
   const onSubmit = async ({ title, description, imageUrl }: FormInputs) => {
     if (title.length <= 1)
       setError("title", {
-        message: "Title should be typed",
+        message: t("errors.title"),
       });
 
     if (formState.isSubmitSuccessful) {
@@ -56,15 +58,19 @@ export const FormCreatePost = () => {
         width: "25rem",
       }}
     >
-      <FormInputText name="title" control={control} label="Title" />
-      <FormInputText name="description" control={control} label="Description" />
+      <FormInputText name="title" control={control} label={t("post.title")} />
+      <FormInputText
+        name="description"
+        control={control}
+        label={t("post.description")}
+      />
       <FormInputText
         name="imageUrl"
         control={control}
-        label="ImageUrl(file upload available soon)"
+        label={t("post.imageUrl")}
       />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        Create
+        {t("actions.create")}
       </Button>
     </Box>
   );

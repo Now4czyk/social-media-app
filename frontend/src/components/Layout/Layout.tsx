@@ -1,10 +1,10 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from "react";
 import { AppBar, Box, Container, Tab, Tabs } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-import { UserPopover } from "./Navigation";
+import { UserPopover } from "./UserPopover";
 import { auth } from "utils";
 import useTranslation from "translations/hooks/useTranslations";
-import { useStore } from "../../store";
+import { useStore } from "store";
 
 interface LayoutProps {
   children?: ReactNode;

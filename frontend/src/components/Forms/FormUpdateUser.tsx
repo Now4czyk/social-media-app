@@ -5,6 +5,7 @@ import { UPDATE_USER } from "graphql/User";
 import { Box, Button } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";
+import useTranslation from "../../translations/hooks/useTranslations";
 
 interface FormInputs {
   firstName: string;
@@ -20,6 +21,7 @@ export const FormUpdateUser = ({
   setEditMode: Dispatch<SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;
 
@@ -31,15 +33,15 @@ export const FormUpdateUser = ({
 
   const onSubmit = async ({ firstName, lastName, email }: FormInputs) => {
     if (firstName.length === 0)
-      setError("firstName", { message: "First name is invalid" });
+      setError("firstName", { message: t("errors.firstName") });
     if (lastName.length === 0)
-      setError("lastName", { message: "Last name is invalid" });
+      setError("lastName", { message: t("errors.lastName") });
     if (
       !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
       )
     )
-      setError("email", { message: "Email is invalid" });
+      setError("email", { message: t("errors.email") });
 
     if (formState.isSubmitSuccessful) {
       await updateUser({
@@ -63,14 +65,22 @@ export const FormUpdateUser = ({
         width: "25rem",
       }}
     >
-      <FormInputText name="firstName" control={control} label="First Name" />
-      <FormInputText name="lastName" control={control} label="Last Name" />
-      <FormInputText name="email" control={control} label="Email" />
+      <FormInputText
+        name="firstName"
+        control={control}
+        label={t("user.firstName")}
+      />
+      <FormInputText
+        name="lastName"
+        control={control}
+        label={t("user.lastName")}
+      />
+      <FormInputText name="email" control={control} label={t("user.email")} />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        Update
+        {t("actions.update")}
       </Button>
       <Button variant="contained" onClick={() => setEditMode(false)}>
-        Cancel
+        {t("actions.edit")}
       </Button>
     </Box>
   );

@@ -1,5 +1,55 @@
 {
   "tabs": {
-    "posts": "Posts"
+    "posts": "Posts",
+    "users": "Users",
+    "forum": "Forum",
+    "profile": "Profile"
+  },
+  "actions": {
+    "create": "Create",
+    "createPost": "Create a post",
+    "logout": "Log out",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "send": "Send",
+    "update": "Update"
+  },
+  "post": {
+    "title": "Title",
+    "description": "Description",
+    "createdAt": "Created at",
+    "updatedAt": "Updated at",
+    "imageUrl": "Image url",
+    "image": "Image"
+  },
+  "user": {
+    "user": "User",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email"
+  },
+  "messages": {
+    "postDetails": "Post details",
+    "userDetails": "User details",
+    "forumDescription": "Here you can share your thoughts",
+    "pageNotFound": "Page not found",
+    "unauthorized": "Unauthorized",
+    "logoutDescription": "Logged out successfully",
+    "newUser": "New to Boring App?",
+    "alreadyUser": "Already have an account?"
+  },
+  "form": {
+    "password": "Password",
+    "confirmPassword": "Confirm password"
+  },
+  "errors": {
+    "title": "Title is required",
+    "password": "Password should  have more than 5 characters",
+    "passwords": "Passwords should be identical",
+    "email": "Email is invalid",
+    "firstName": "First name is invalid",
+    "lastName": "Last name is invalid"
   }
 }

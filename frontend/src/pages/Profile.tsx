@@ -4,14 +4,16 @@ import { FETCH_USER, GetUser } from "graphql/User";
 import { useState } from "react";
 import { Edit } from "@mui/icons-material";
 import { FormUpdateUser } from "components";
+import useTranslation from "../translations/hooks/useTranslations";
 
 export const Profile = () => {
   const { data } = useQuery<GetUser>(FETCH_USER);
   const [editMode, setEditMode] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Box>
-      <Typography>PROFILE</Typography>
+      <Typography>{t("tabs.profile")}</Typography>
       <Box
         sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
       >
@@ -43,15 +45,21 @@ export const Profile = () => {
         />
       ) : (
         <>
-          <Typography>First Name: {data?.getUser.firstName}</Typography>
-          <Typography>Last Name: {data?.getUser.lastName}</Typography>
-          <Typography>Email: {data?.getUser.email}</Typography>
           <Typography>
-            Created at:
+            {t("user.firstName")}: {data?.getUser.firstName}
+          </Typography>
+          <Typography>
+            {t("user.lastName")}: {data?.getUser.lastName}
+          </Typography>
+          <Typography>
+            {t("user.email")}: {data?.getUser.email}
+          </Typography>
+          <Typography>
+            {t("post.createdAt")}:
             {" " + new Date(parseInt(data?.getUser.createdAt || "")).toString()}
           </Typography>
           <Typography>
-            Updated at:
+            {t("post.updatedAt")}:
             {" " + new Date(parseInt(data?.getUser.updatedAt || "")).toString()}
           </Typography>
         </>

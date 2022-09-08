@@ -3,26 +3,34 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { FETCH_USER_BY_ID, GetUserById } from "graphql/User";
 import { PostTile } from "components";
+import useTranslation from "../translations/hooks/useTranslations";
 
 export const UserDetails = () => {
   const params = useParams();
   const { data } = useQuery<GetUserById>(FETCH_USER_BY_ID, {
     variables: { userId: params.userId },
   });
+  const { t } = useTranslation();
 
   return (
     <Box>
-      <Typography>USER DETAILS</Typography>
+      <Typography>{t("messages.userDetails")}</Typography>
       <Avatar />
-      <Typography>First Name: {data?.getUserById.firstName}</Typography>
-      <Typography>Last Name: {data?.getUserById.lastName}</Typography>
-      <Typography>Email: {data?.getUserById.email}</Typography>
       <Typography>
-        Created at:
+        {t("user.firstName")}: {data?.getUserById.firstName}
+      </Typography>
+      <Typography>
+        {t("user.lastName")}: {data?.getUserById.lastName}
+      </Typography>
+      <Typography>
+        {t("user.email")}: {data?.getUserById.email}
+      </Typography>
+      <Typography>
+        {t("post.createdAt")}:
         {" " + new Date(parseInt(data?.getUserById.createdAt || "")).toString()}
       </Typography>
       <Typography>
-        Updated at:
+        {t("post.updatedAt")}:
         {" " + new Date(parseInt(data?.getUserById.updatedAt || "")).toString()}
       </Typography>
       {data?.getUserById.posts.map((post) => (

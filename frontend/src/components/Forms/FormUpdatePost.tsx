@@ -5,6 +5,7 @@ import { UPDATE_POST } from "graphql/Post";
 import { Box, Button } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";
+import useTranslation from "../../translations/hooks/useTranslations";
 
 interface FormInputs {
   title: string;
@@ -20,6 +21,7 @@ export const FormUpdatePost = ({
   setEditMode: Dispatch<SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const params = useParams();
   const { handleSubmit, control, setError, formState, reset } = methods;
@@ -34,7 +36,7 @@ export const FormUpdatePost = ({
   const onSubmit = async ({ title, description, imageUrl }: FormInputs) => {
     if (title.length <= 1)
       setError("title", {
-        message: "Title should be typed",
+        message: t("errors.title"),
       });
 
     if (formState.isSubmitSuccessful) {
@@ -59,18 +61,22 @@ export const FormUpdatePost = ({
         width: "25rem",
       }}
     >
-      <FormInputText name="title" control={control} label="Title" />
-      <FormInputText name="description" control={control} label="Description" />
+      <FormInputText name="title" control={control} label={t("post.title")} />
+      <FormInputText
+        name="description"
+        control={control}
+        label={t("post.description")}
+      />
       <FormInputText
         name="imageUrl"
         control={control}
-        label="ImageUrl(file upload available soon)"
+        label={t("post.imageUrl")}
       />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        Update
+        {t("actions.edit")}
       </Button>
       <Button variant="contained" onClick={() => setEditMode(false)}>
-        Cancel
+        {t("actions.cancel")}
       </Button>
     </Box>
   );
