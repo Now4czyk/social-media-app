@@ -71,12 +71,20 @@ export const Layout = ({ children }: LayoutProps) => {
                 value="/posts"
               />
               <Tab
-                label="Profile"
+                label={t("tabs.profile")}
                 style={{ color: "white" }}
                 value="/profile"
               />
-              <Tab label="Users" style={{ color: "white" }} value="/users" />
-              <Tab label="Forum" style={{ color: "white" }} value="/forum" />
+              <Tab
+                label={t("tabs.users")}
+                style={{ color: "white" }}
+                value="/users"
+              />
+              <Tab
+                label={t("tabs.forum")}
+                style={{ color: "white" }}
+                value="/forum"
+              />
             </Tabs>
           )}
         </Box>
