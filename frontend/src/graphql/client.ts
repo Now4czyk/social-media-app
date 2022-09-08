@@ -7,7 +7,8 @@ import {
   InMemoryCache,
   split,
 } from "@apollo/client";
-import { auth, CustomError } from "../../utils";
+import { auth } from "utils";
+import { CustomError } from "types";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";

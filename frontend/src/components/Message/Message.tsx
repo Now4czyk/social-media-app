@@ -1,8 +1,9 @@
 import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
-import { MessagePopulated } from "../../graphql";
+import { MessagePopulated } from "graphql/Message";
 import jwt_decode from "jwt-decode";
-import { auth, Decoded } from "../../utils";
+import { auth } from "utils";
+import { Decoded } from "types";
 import { useNavigate } from "react-router-dom";
 
 interface MessageProps {

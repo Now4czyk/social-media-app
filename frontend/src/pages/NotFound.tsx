@@ -1,3 +1,7 @@
+import useTranslation from "../translations/hooks/useTranslations";
+
 export const NotFound = () => {
-  return <div>Page not found</div>;
+  const { t } = useTranslation();
+
+  return <div>{t("messages.pageNotFound")}</div>;
 };

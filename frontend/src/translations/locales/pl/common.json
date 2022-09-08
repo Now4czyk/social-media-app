@@ -1,0 +1,55 @@
+{
+  "tabs": {
+    "posts": "Posty",
+    "users": "Użytkownicy",
+    "forum": "Forum",
+    "profile": "Profil"
+  },
+  "actions": {
+    "create": "Utwórz",
+    "createPost": "Utwórz post",
+    "logout": "Wyloguj",
+    "signin": "Zaloguj",
+    "signup": "Utwórz konto",
+    "cancel": "Anuluj",
+    "edit": "Edytuj",
+    "send": "Wyślij",
+    "update": "Zaktualizuj"
+  },
+  "post": {
+    "title": "Tytuł",
+    "description": "Opis",
+    "createdAt": "Utworzono",
+    "updatedAt": "Zaktualizowano",
+    "imageUrl": "Adres url obrazu",
+    "image": "Obraz"
+  },
+  "user": {
+    "user": "Użytkownik",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "email": "Email"
+  },
+  "messages": {
+    "postDetails": "Szczegóły postu",
+    "userDetails": "Szczegóły użytkownika",
+    "forumDescription": "Tutaj możesz podzielić się przemyśleniami",
+    "pageNotFound": "Nie znaleziono takiej strony",
+    "unauthorized": "Brak autoryzacji",
+    "logoutDescription": "Wylogowano pomyślnie",
+    "newUser": "Pierwszy raz w Boring App?",
+    "alreadyUser": "Masz już konto?"
+  },
+  "form": {
+    "password": "Hasło",
+    "confirmPassword": "Potwierdź hasło"
+  },
+  "errors": {
+    "title": "Tytuł jest wymagany",
+    "password": "Hasło musi zawierać co najmniej 5 znaków",
+    "passwords": "Hasła muszą być identyczne",
+    "email": "Email niepoprawny",
+    "firstName": "Imię niepoprawne",
+    "lastName": "Nazwisko niepoprawne"
+  }
+}

@@ -1,3 +1,7 @@
+import useTranslation from "../translations/hooks/useTranslations";
+
 export const Unauthorized = () => {
-  return <div>UNAUTHORIZED</div>;
+  const { t } = useTranslation();
+
+  return <div>{t("messages.unauthorized")}</div>;
 };

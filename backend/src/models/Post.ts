@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
-import { Post } from '../graphql/Post/types';
+import { PostPopulated } from '../graphql/Post/types';
 
-const PostSchema = new Schema<Post>(
+const PostSchema = new Schema<PostPopulated>(
   {
     title: { type: String, required: true },
     description: { type: String },

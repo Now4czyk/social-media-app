@@ -1,12 +1,15 @@
 import { useQuery } from "@apollo/client";
-import { FETCH_USERS, GetAllUsersQuery } from "../graphql";
-import { CircularProgress } from "@mui/material";
+import { FETCH_USERS, GetAllUsers } from "graphql/User";
+import { Box, CircularProgress, Typography } from "@mui/material";
+import useTranslation from "../translations/hooks/useTranslations";
 
 export const Users = () => {
-  const { loading, data } = useQuery<GetAllUsersQuery>(FETCH_USERS);
+  const { loading, data } = useQuery<GetAllUsers>(FETCH_USERS);
+  const { t } = useTranslation();
 
   return (
-    <div>
+    <Box>
+      <Typography>{t("tabs.users")}</Typography>
       {loading ? (
         <CircularProgress />
       ) : (
@@ -17,6 +20,6 @@ export const Users = () => {
           </>
         ))
       )}
-    </div>
+    </Box>
   );
 };

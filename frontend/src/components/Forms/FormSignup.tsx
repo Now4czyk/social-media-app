@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { FormInputText } from "./utils/FormInputText";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER_MUTATION } from "../../graphql/Mutations";
+import { CREATE_USER } from "graphql/User";
+import useTranslation from "translations/hooks/useTranslations";
 
 interface FormInputs {
   firstName: string;
@@ -23,10 +24,11 @@ const defaultValues: FormInputs = {
 
 export const FormSignup = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;
 
-  const [createUser] = useMutation(CREATE_USER_MUTATION, {
+  const [createUser] = useMutation(CREATE_USER, {
     onCompleted: () => navigate("/signin"),
   });
 
@@ -38,9 +40,9 @@ export const FormSignup = () => {
     confirmPassword,
   }: FormInputs) => {
     if (firstName.length === 0)
-      setError("firstName", { message: "First name is invalid" });
+      setError("firstName", { message: t("errors.firstName") });
     if (lastName.length === 0)
-      setError("lastName", { message: "Last name is invalid" });
+      setError("lastName", { message: t("errors.lastName") });
     if (
       !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
@@ -49,19 +51,19 @@ export const FormSignup = () => {
       setError("email", { message: "Email is invalid" });
     if (password.length <= 5)
       setError("password", {
-        message: "Password should  have more than 5 characters",
+        message: t("errors.password"),
       });
     if (password !== confirmPassword) {
       setError("password", {
-        message: "Passwords should be identical",
+        message: t("errors.passwords"),
       });
       setError("confirmPassword", {
-        message: "Password should be identical",
+        message: t("errors.passwords"),
       });
     }
 
     if (formState.isSubmitSuccessful) {
-      const user = await createUser({
+      await createUser({
         variables: {
           firstName,
           lastName,
@@ -83,31 +85,40 @@ export const FormSignup = () => {
         width: "15rem",
       }}
     >
-      <FormInputText name="firstName" control={control} label="First name" />
-      <FormInputText name="lastName" control={control} label="Last name" />
+      <FormInputText
+        name="firstName"
+        control={control}
+        label={t("user.firstName")}
+      />
+      <FormInputText
+        name="lastName"
+        control={control}
+        label={t("user.lastName")}
+      />
       <FormInputText
         name="email"
         type="email"
         control={control}
-        label="Email"
+        label={t("user.email")}
       />
       <FormInputText
         name="password"
         type="password"
         control={control}
-        label="Password"
+        label={t("form.password")}
       />
       <FormInputText
         name="confirmPassword"
         type="password"
         control={control}
-        label="Confirm password"
+        label={t("form.confirmPassword")}
       />
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        Sign up
+        {t("actions.signup")}
       </Button>
       <Typography sx={{ fontSize: "0.9rem" }}>
-        Already have an account? <Link to="/signin">Sing in</Link>{" "}
+        {t("messages.alreadyUser")}
+        <Link to="/signin"> {t("actions.signin")}</Link>{" "}
       </Typography>
     </Box>
   );

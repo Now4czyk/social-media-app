@@ -10,7 +10,7 @@ import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
-import { Context } from './utils';
+import { Context } from './types';
 
 dotenv.config();
 
@@ -20,6 +20,7 @@ const httpServer = createServer(app);
 const wsServer = new WebSocketServer({
   server: httpServer,
 });
+
 const schema = makeExecutableSchema<Context>({ typeDefs, resolvers });
 const pubSub = new PubSub();
 const serverCleanup = useServer(

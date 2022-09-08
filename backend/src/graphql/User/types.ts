@@ -1,4 +1,4 @@
-import { Post } from '../Post/types';
+import { PostPopulated } from '../Post/types';
 
 export const types = `
   type User {
@@ -34,16 +34,9 @@ export interface User {
   email: string;
   password: string;
   confirmPassword: string;
-  posts: Array<Post>;
+  posts: Array<PostPopulated>;
   firstName: string;
   lastName: string;
   createdAt: string;
   updatedAt: string;
 }
-
-export type Decoded = {
-  userId: string;
-  email: string;
-  iat: number;
-  exp: number;
-};

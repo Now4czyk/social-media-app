@@ -1,9 +1,8 @@
-import { Post } from './types';
+import { PostPopulated } from './types';
 import { PostModel, UserModel } from '../../models';
-import { decodeToken } from '../../middleware/decodeToken';
-import { Decoded } from '../User/types';
+import { decodeToken } from '../../utils';
 import { remove } from 'lodash';
-import { Context } from '../../utils';
+import { Context, Decoded } from '../../types';
 
 const queries = {
   getAllPosts: async (_: ParentNode, args: any, { req }: Context) => {
@@ -29,7 +28,7 @@ const mutations = {
       title,
       description,
       imageUrl,
-    }: Pick<Post, 'title' | 'description' | 'imageUrl'>,
+    }: Pick<PostPopulated, 'title' | 'description' | 'imageUrl'>,
     { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;
@@ -89,7 +88,7 @@ const mutations = {
 
   updatePost: async (
     _: ParentNode,
-    { title, description, imageUrl, id }: Post & { id: string },
+    { title, description, imageUrl, id }: PostPopulated & { id: string },
     { req }: Context
   ) => {
     const decodedUser = decodeToken(req) as Decoded;

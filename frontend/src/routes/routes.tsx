@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Authentication from "../pages/Authentication";
+import { Authentication } from "pages";
 import { RouteGuard } from "./routeGuard";
 import {
   Users,
@@ -12,9 +12,8 @@ import {
   UserDetails,
   Forum,
 } from "pages";
-import React from "react";
 
-export const MainRoutes = () => (
+export const AppRoutes = () => (
   <Routes>
     <Route path="/signin" element={<Authentication />} />
     <Route path="/signup" element={<Authentication />} />
@@ -25,7 +24,11 @@ export const MainRoutes = () => (
       path="/posts/:postId"
       element={RouteGuard({ element: <PostDetails /> })}
     />
-    <Route path="/posts" element={RouteGuard({ element: <Posts /> })} />
+    <Route
+      path={"/"}
+      element={RouteGuard({ element: <Navigate to={"/posts"} /> })}
+    />
+    <Route path={"/posts"} element={RouteGuard({ element: <Posts /> })} />
     <Route path="/profile" element={RouteGuard({ element: <Profile /> })} />
     <Route path="/forum" element={RouteGuard({ element: <Forum /> })} />
     <Route

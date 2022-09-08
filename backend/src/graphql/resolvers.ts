@@ -8,8 +8,6 @@ export const resolvers = {
     ...User.resolvers.queries,
     ...Post.resolvers.queries,
     ...Authorization.resolvers.queries,
-    //TODO: delete because of subscription
-    ...Message.resolvers.queries,
   },
   Mutation: {
     ...User.resolvers.mutations,
