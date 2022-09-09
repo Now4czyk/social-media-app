@@ -15,7 +15,7 @@ const queries = {
     { perPage, page }: { perPage: number; page: number },
     { req }: Context
   ) => {
-    // decodeToken(req);
+    decodeToken(req);
 
     const total = await PostModel.count();
 
