@@ -14,7 +14,8 @@
     "cancel": "Cancel",
     "edit": "Edit",
     "send": "Send",
-    "update": "Update"
+    "update": "Update",
+    "typeMessage": "Type message"
   },
   "post": {
     "title": "Title",
@@ -31,6 +32,7 @@
     "email": "Email"
   },
   "messages": {
+    "all": "All",
     "postDetails": "Post details",
     "userDetails": "User details",
     "forumDescription": "Here you can share your thoughts",

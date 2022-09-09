@@ -1,10 +1,11 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { FormInputText } from "./utils";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "graphql/Post";
 import useTranslation from "../../translations/hooks/useTranslations";
+import { MD } from "../../utils";
 
 interface FormInputs {
   title: string;
@@ -23,6 +24,7 @@ export const FormCreatePost = () => {
   const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState, reset } = methods;
+  const matches = useMediaQuery(MD);
 
   const [createPost] = useMutation(CREATE_POST, {
     onCompleted: () => {
@@ -49,29 +51,44 @@ export const FormCreatePost = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        rowGap: "1rem",
-        paddingTop: "1rem",
-        width: "25rem",
-      }}
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
     >
-      <FormInputText name="title" control={control} label={t("post.title")} />
-      <FormInputText
-        name="description"
-        control={control}
-        label={t("post.description")}
-      />
-      <FormInputText
-        name="imageUrl"
-        control={control}
-        label={t("post.imageUrl")}
-      />
-      <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-        {t("actions.create")}
-      </Button>
-    </Box>
+      <Grid item>
+        <Typography align="center" marginY="1rem" sx={{ fontSize: "1.5rem" }}>
+          {t("actions.createPost")}
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "1rem",
+            width: matches ? "25rem" : "20rem",
+          }}
+        >
+          <FormInputText
+            name="title"
+            control={control}
+            label={t("post.title")}
+          />
+          <FormInputText
+            name="description"
+            control={control}
+            label={t("post.description")}
+          />
+          <FormInputText
+            name="imageUrl"
+            control={control}
+            label={t("post.imageUrl")}
+          />
+          <Button variant="contained" onClick={handleSubmit(onSubmit)}>
+            {t("actions.create")}
+          </Button>
+        </Box>
+      </Grid>
+    </Grid>
   );
 };

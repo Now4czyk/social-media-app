@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "graphql/User";
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";
 import useTranslation from "../../translations/hooks/useTranslations";
+import { MD } from "../../utils";
 
 interface FormInputs {
   firstName: string;
@@ -21,6 +22,7 @@ export const FormUpdateUser = ({
   setEditMode: Dispatch<SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
+  const matches = useMediaQuery(MD);
   const { t } = useTranslation();
   const methods = useForm<FormInputs>({ defaultValues });
   const { handleSubmit, control, setError, formState } = methods;
@@ -62,7 +64,8 @@ export const FormUpdateUser = ({
         flexDirection: "column",
         rowGap: "1rem",
         paddingTop: "1rem",
-        width: "25rem",
+        width: matches ? "25rem" : "20rem",
+        margin: "0 auto",
       }}
     >
       <FormInputText
@@ -80,7 +83,7 @@ export const FormUpdateUser = ({
         {t("actions.update")}
       </Button>
       <Button variant="contained" onClick={() => setEditMode(false)}>
-        {t("actions.edit")}
+        {t("actions.cancel")}
       </Button>
     </Box>
   );

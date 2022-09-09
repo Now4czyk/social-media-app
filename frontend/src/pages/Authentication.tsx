@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { FormControl } from "@mui/material";
+import { FormControl, Grid } from "@mui/material";
 import { FormSignup, FormSignin } from "components";
 
 export const Authentication = () => {
@@ -7,8 +7,17 @@ export const Authentication = () => {
   const Form = () => (isSignIn ? <FormSignin /> : <FormSignup />);
 
   return (
-    <FormControl>
-      <Form />
-    </FormControl>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Grid item marginY="2rem">
+        <FormControl>
+          <Form />
+        </FormControl>
+      </Grid>
+    </Grid>
   );
 };

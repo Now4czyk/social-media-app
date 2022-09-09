@@ -15,7 +15,7 @@ import { auth } from "utils/auth";
 import useTranslation from "translations/hooks/useTranslations";
 import { Login, Logout, Person } from "@mui/icons-material";
 
-export const UserPopover = () => {
+export const PostDetails = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
   const { data } = useQuery<Verification>(VERIFY);
   const { t } = useTranslation();

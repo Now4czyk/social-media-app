@@ -10,10 +10,18 @@ export const LanguageSwitcher = () => {
     <Select
       value={localization.locale}
       onChange={(e) => changeLocale(e.target.value as Locale)}
-      sx={{ height: "2.4rem", marginY: "auto" }}
+      sx={{
+        height: "2.4rem",
+        width: "3rem",
+        marginY: "auto",
+        color: "white",
+      }}
+      variant="standard"
     >
       {locales.map((locale) => (
-        <MenuItem value={locale}>{locale}</MenuItem>
+        <MenuItem value={locale} sx={{ width: "4rem" }}>
+          {locale}
+        </MenuItem>
       ))}
     </Select>
   );

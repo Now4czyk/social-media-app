@@ -1,8 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { FETCH_POSTS_PAGINATION, GetPostsPagination } from "graphql/Post";
 import { PostTile, FormCreatePost } from "components";
-import useTranslation from "../translations/hooks/useTranslations";
 import { Pagination } from "components/Pagination/Pagination";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -13,7 +12,6 @@ export interface Params {
 }
 
 export const Posts = () => {
-  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [params, setParams] = useState<Params>({
     perPage: parseInt(searchParams.get("perPage") || "2"),
@@ -34,16 +32,17 @@ export const Posts = () => {
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography>{t("actions.createPost")}</Typography>
+      <Typography></Typography>
       <FormCreatePost />
       <Pagination
         params={params}
         total={data?.getPostsPagination.total || 1}
         onChange={onPaginationChange}
-      />
-      {data?.getPostsPagination.posts.map((post) => (
-        <PostTile key={post.id} post={post} />
-      ))}
+      >
+        {data?.getPostsPagination.posts.map((post) => (
+          <PostTile key={post.id} post={post} />
+        ))}
+      </Pagination>
     </Box>
   );
 };

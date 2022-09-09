@@ -14,7 +14,8 @@
     "cancel": "Anuluj",
     "edit": "Edytuj",
     "send": "Wyślij",
-    "update": "Zaktualizuj"
+    "update": "Zaktualizuj",
+    "typeMessage": "Napisz wiadomość"
   },
   "post": {
     "title": "Tytuł",
@@ -31,6 +32,7 @@
     "email": "Email"
   },
   "messages": {
+    "all": "Wszystkie",
     "postDetails": "Szczegóły postu",
     "userDetails": "Szczegóły użytkownika",
     "forumDescription": "Tutaj możesz podzielić się przemyśleniami",

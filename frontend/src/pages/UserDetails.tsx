@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { FETCH_USER_BY_ID, GetUserById } from "graphql/User";
@@ -13,26 +13,27 @@ export const UserDetails = () => {
   const { t } = useTranslation();
 
   return (
-    <Box>
-      <Typography>{t("messages.userDetails")}</Typography>
-      <Avatar />
-      <Typography>
-        {t("user.firstName")}: {data?.getUserById.firstName}
-      </Typography>
-      <Typography>
-        {t("user.lastName")}: {data?.getUserById.lastName}
-      </Typography>
-      <Typography>
-        {t("user.email")}: {data?.getUserById.email}
-      </Typography>
-      <Typography>
-        {t("post.createdAt")}:
-        {" " + new Date(parseInt(data?.getUserById.createdAt || "")).toString()}
-      </Typography>
-      <Typography>
-        {t("post.updatedAt")}:
-        {" " + new Date(parseInt(data?.getUserById.updatedAt || "")).toString()}
-      </Typography>
+    <Stack>
+      <Stack marginY="1rem">
+        <Avatar
+          sx={{
+            textTransform: "uppercase",
+            width: "7rem",
+            height: "7rem",
+            fontSize: "3rem",
+            margin: "0 auto",
+          }}
+        >
+          {data?.getUserById.firstName[0]}
+          {data?.getUserById.lastName[0]}
+        </Avatar>
+        <Typography align="center" fontSize="2rem">
+          {data?.getUserById.firstName + " " + data?.getUserById.lastName}
+        </Typography>
+        <Typography align="center" fontSize="1.4rem">
+          ({data?.getUserById.email})
+        </Typography>
+      </Stack>
       {data?.getUserById.posts.map((post) => (
         <PostTile
           post={{
@@ -48,6 +49,6 @@ export const UserDetails = () => {
           }}
         />
       ))}
-    </Box>
+    </Stack>
   );
 };
