@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import {
   Box,
   MenuItem,
@@ -6,8 +6,8 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useNavigate } from "react-router";
-import { createSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { Params } from "../../pages";
 
 const createChangeEvent = (perPage: number, page: number) =>
   ({
@@ -16,50 +16,48 @@ const createChangeEvent = (perPage: number, page: number) =>
   } as any);
 
 export interface PaginationProps {
-  perPage: number;
+  params: Params;
   total: number;
   onChange?: (event: ChangeEvent<{ perPage: number; page: number }>) => void;
 }
 
-type Count = 1 | 5;
-
-export const Pagination = ({ total, onChange }: PaginationProps) => {
-  const [perPage, setPerPage] = useState<Count>(5);
-  const [page, setPage] = useState<Count>(1);
-  const navigate = useNavigate();
+export const Pagination = ({ total, onChange, params }: PaginationProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handlePaginationChange = (
     event: ChangeEvent<unknown>,
     value: number
   ) => {
-    onChange?.(createChangeEvent(perPage, value));
-    setPage(value as Count);
-    navigate({
-      search: createSearchParams({
-        perPage: "2137",
-        page: "2",
-      }).toString(),
+    onChange?.(createChangeEvent(params.perPage, value));
+    setSearchParams({
+      perPage: params.perPage.toString(),
+      page: value.toString(),
     });
   };
 
   const handleSelectChange = (e: SelectChangeEvent) => {
-    onChange?.(createChangeEvent(parseInt(e.target.value), page));
-    setPerPage(parseInt(e.target.value) as Count);
+    onChange?.(createChangeEvent(parseInt(e.target.value), params.page));
+    setSearchParams({
+      perPage: e.target.value,
+      page: params.page.toString(),
+    });
   };
 
   return (
     <Box>
       <Select
-        value={perPage.toString()}
+        value={searchParams.get("perPage") || undefined}
         type="number"
         label="Age"
         onChange={handleSelectChange}
+        sx={{ minWidth: "5rem" }}
       >
         <MenuItem value={1}>1</MenuItem>
-        <MenuItem value={5}>5</MenuItem>
+        <MenuItem value={2}>2</MenuItem>
       </Select>
       <PaginationMUI
-        count={total / perPage}
+        page={+(searchParams.get("page") || params.page)}
+        count={Math.ceil(total / params.perPage)}
         onChange={handlePaginationChange}
       />
     </Box>

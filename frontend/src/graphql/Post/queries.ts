@@ -35,3 +35,24 @@ export const FETCH_POSTS = gql(`
     }
   }
 `);
+
+export const FETCH_POSTS_PAGINATION = gql(`
+  query GetPostsPagination($perPage: Int!, $page: Int!) {
+    getPostsPagination(perPage: $perPage, page: $page) {
+      total
+      posts {
+        id
+        title
+        description
+        imageUrl
+        user {
+          id
+          firstName
+          lastName
+        }
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`);

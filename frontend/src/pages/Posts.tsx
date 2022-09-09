@@ -1,40 +1,48 @@
 import { Box, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
-import { FETCH_POSTS, GetAllPosts } from "graphql/Post";
+import { FETCH_POSTS_PAGINATION, GetPostsPagination } from "graphql/Post";
 import { PostTile, FormCreatePost } from "components";
 import useTranslation from "../translations/hooks/useTranslations";
 import { Pagination } from "components/Pagination/Pagination";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-interface Params {
+export interface Params {
   perPage: number;
   page: number;
 }
 
 export const Posts = () => {
-  const { data } = useQuery<GetAllPosts>(FETCH_POSTS);
   const { t } = useTranslation();
-  const [params, setParams] = useState({
-    perPage: 5,
-    page: 1,
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [params, setParams] = useState<Params>({
+    perPage: parseInt(searchParams.get("perPage") || "2"),
+    page: parseInt(searchParams.get("page") || "1"),
+  });
+  const { data } = useQuery<GetPostsPagination>(FETCH_POSTS_PAGINATION, {
+    variables: {
+      perPage: params.perPage,
+      page: params.page,
+    },
   });
 
-  const onPaginationChange = (
-    e: ChangeEvent<{ perPage: number; page: number }>
-  ) => setParams(e.target);
+  useEffect(() => {
+    !searchParams.get("page") && setSearchParams({ perPage: "2", page: "1" });
+  }, []);
+
+  const onPaginationChange = (e: ChangeEvent<Params>) => setParams(e.target);
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Typography>{t("actions.createPost")}</Typography>
       <FormCreatePost />
       <Pagination
-        perPage={params.perPage}
-        total={data?.getAllPosts.length || 1}
+        params={params}
+        total={data?.getPostsPagination.total || 1}
         onChange={onPaginationChange}
       />
-      {data?.getAllPosts.map((post) => (
-        <PostTile post={post} />
+      {data?.getPostsPagination.posts.map((post) => (
+        <PostTile key={post.id} post={post} />
       ))}
     </Box>
   );

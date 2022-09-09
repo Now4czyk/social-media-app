@@ -10,6 +10,22 @@ const queries = {
 
     return await PostModel.find().populate('user');
   },
+  getPostsPagination: async (
+    _: ParentNode,
+    { perPage, page }: { perPage: number; page: number },
+    { req }: Context
+  ) => {
+    // decodeToken(req);
+
+    const total = await PostModel.count();
+
+    const posts = await PostModel.find()
+      .populate('user')
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+
+    return { total, posts };
+  },
   getPostById: async (
     _: ParentNode,
     args: { id: string },
