@@ -10,14 +10,17 @@ export interface State {
 
 export const useStore = create<State>((set) => ({
   localization: {
-    locale: defaultLocale,
-    translations: translations[defaultLocale],
+    locale: (localStorage.getItem("lang") as Locale) || defaultLocale,
+    translations:
+      translations[(localStorage.getItem("lang") as Locale) || defaultLocale],
   },
-  changeLocale: (language: Locale) =>
+  changeLocale: (language: Locale) => {
     set((state: State) => ({
       localization: {
         locale: language,
-        translations: translations["en"],
+        translations: translations[language],
       },
-    })),
+    }));
+    localStorage.setItem("lang", language);
+  },
 }));

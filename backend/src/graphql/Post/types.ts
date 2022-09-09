@@ -10,6 +10,11 @@ export const types = `
     createdAt: String!
     updatedAt: String!
   }
+  
+  type PostsWithTotal {
+    posts: [Post!]!
+    total: Int!
+  }
 `;
 
 export interface PostPopulated {

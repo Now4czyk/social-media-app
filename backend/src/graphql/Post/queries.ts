@@ -3,4 +3,8 @@ export const queries = `
   getPostById(
     id: ID!
   ): Post!
+  getPostsPagination(
+    perPage: Int!
+    page: Int!
+  ): PostsWithTotal
 `;

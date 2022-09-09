@@ -14,6 +14,10 @@ export interface GetAllPosts {
   getAllPosts: Array<PostPopulated>;
 }
 
+export interface GetPostsPagination {
+  getPostsPagination: { total: number; posts: Array<PostPopulated> };
+}
+
 export interface GetPostById {
   getPostById: PostPopulated;
 }
