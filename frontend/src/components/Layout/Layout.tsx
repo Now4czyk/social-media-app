@@ -7,6 +7,8 @@ import {
   Tabs,
   useMediaQuery,
   Drawer,
+  Typography,
+  BottomNavigation,
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -15,6 +17,7 @@ import { auth, MD } from "utils";
 import useTranslation from "translations/hooks/useTranslations";
 import { LanguageSwitcher } from "../../translations/components";
 import { DrawerList } from "./DrawerList";
+import { Footer } from "../Footer";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -130,6 +133,22 @@ export const Layout = ({ children }: LayoutProps) => {
         </Box>
       </AppBar>
       <Container fixed>{children}</Container>
+      <Footer />
+      <BottomNavigation
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          background: "#1D2A44",
+          width: "100%",
+          height: "2rem",
+        }}
+      >
+        <Typography
+          sx={{ lineHeight: "2rem", fontSize: "0.9rem", color: "white" }}
+        >
+          &copy;2022 Kacper Nowaczyk
+        </Typography>
+      </BottomNavigation>
     </>
   );
 };
