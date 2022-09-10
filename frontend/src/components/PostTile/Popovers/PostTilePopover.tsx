@@ -80,8 +80,8 @@ export const PostTilePopover = ({ postId }: PostTilePopoverProps) => {
             <Clear />
             <ListItemText
               primary={t("actions.delete")}
-              onClick={() => {
-                deletePost();
+              onClick={async () => {
+                await deletePost();
                 navigate(0);
               }}
               sx={{ marginLeft: "0.5rem" }}
