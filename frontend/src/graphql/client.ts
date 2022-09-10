@@ -16,12 +16,12 @@ import { toast } from "react-toastify";
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://localhost:8080/graphql",
+    url: "ws://boring-app-now4czyk.herokuapp.com/graphql",
   })
 );
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:8080/graphql",
+  uri: "https://boring-app-now4czyk.herokuapp.com/graphql",
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
@@ -54,6 +54,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "Bearer fake",
+      cors: false,
     },
   };
 });

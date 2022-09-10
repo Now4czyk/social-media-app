@@ -60,7 +60,7 @@ const startServer = async () => {
 
   await server.start();
 
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, cors: false });
 
   await mongoose.connect(process.env.MONGO_URI!);
 
