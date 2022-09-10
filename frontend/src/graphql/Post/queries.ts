@@ -12,6 +12,9 @@ export const FETCH_POST_BY_ID = gql(`
         lastName
         id
       }
+      likes {
+        id
+      }
       createdAt
       updatedAt
     }
@@ -49,6 +52,9 @@ export const FETCH_POSTS_PAGINATION = gql(`
           id
           firstName
           lastName
+        }
+        likes {
+          id
         }
         createdAt
         updatedAt

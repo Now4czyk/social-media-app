@@ -60,7 +60,7 @@ export const Pagination = ({
           type="number"
           label="Age"
           onChange={handleSelectChange}
-          sx={{ width: "5rem", height: "2.2rem", margin: "1rem 0" }}
+          sx={{ width: "7.5rem", height: "2.2rem", margin: "1rem 0" }}
         >
           <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>

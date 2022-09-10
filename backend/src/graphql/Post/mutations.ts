@@ -15,4 +15,8 @@ export const mutations = `
     description: String!
     imageUrl: String
   ): Post
+  
+  likePost(
+    id: ID!
+  ):Post
 `;

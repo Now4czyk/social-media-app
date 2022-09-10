@@ -5,6 +5,7 @@ export interface PostPopulated {
   title: string;
   description: string;
   user: User;
+  likes: Array<{ id: string }>;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;
