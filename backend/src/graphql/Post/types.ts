@@ -7,6 +7,7 @@ export const types = `
     description: String!
     imageUrl: String
     user: User
+    likes: [User!]!
     createdAt: String!
     updatedAt: String!
   }
@@ -22,6 +23,7 @@ export interface PostPopulated {
   title: string;
   description: string;
   user: User;
+  likes: Array<User>;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;

@@ -1,29 +1,52 @@
 import { useState } from "react";
-import { Avatar, Box, Stack, Typography, useMediaQuery } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { DELETE_POST, FETCH_POST_BY_ID, GetPostById } from "graphql/Post";
-import jwt_decode from "jwt-decode";
+import {
+  DELETE_POST,
+  FETCH_POST_BY_ID,
+  GetPostById,
+  LIKE_POST,
+} from "graphql/Post";
 import { auth, MD } from "utils";
-import { Decoded } from "types";
-import { Clear, Edit } from "@mui/icons-material";
 import { FormUpdatePost } from "components";
 import { PostDetailsPopover } from "../components/PostTile/Popovers";
+import { Comment, Recommend, ThumbUp } from "@mui/icons-material";
+import { UserComment } from "../components/Comment";
+import useTranslation from "../translations/hooks/useTranslations";
+import jwt_decode from "jwt-decode";
+import { Decoded } from "../types";
 
 export const PostDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const matches = useMediaQuery(MD);
   const [editMode, setEditMode] = useState(false);
+  const [content, setContent] = useState<string>("");
+  const [commentMode, setCommentMode] = useState<boolean>(true);
+  const { t } = useTranslation();
 
-  const { data } = useQuery<GetPostById>(FETCH_POST_BY_ID, {
+  const { data, refetch } = useQuery<GetPostById>(FETCH_POST_BY_ID, {
     variables: { postId: params.postId },
   });
-  const [deletePost] = useMutation(DELETE_POST, {
+
+  const [likePost] = useMutation(LIKE_POST, {
     variables: {
       postId: params.postId,
     },
   });
+
+  const isLiked = data?.getPostById.likes.find(
+    (like) => like.id === jwt_decode<Decoded>(auth.getToken() || "").userId
+  );
 
   return (
     <Stack
@@ -85,6 +108,71 @@ export const PostDetails = () => {
               }}
             />
           </Stack>
+          <Stack flexDirection="row">
+            <Stack>
+              <Stack flexDirection="row">
+                <Recommend />
+                <Typography>{data?.getPostById.likes.length}</Typography>
+              </Stack>
+              <Stack flexDirection="row">
+                <Button
+                  variant={isLiked ? "contained" : "text"}
+                  onClick={async () => {
+                    await likePost();
+                    await refetch({
+                      variables: { postId: params.postId },
+                    });
+                  }}
+                >
+                  <ThumbUp />
+                  <Typography sx={{ marginLeft: "0.5rem" }}>
+                    {" "}
+                    {t("actions.like")}
+                  </Typography>
+                </Button>
+              </Stack>
+            </Stack>
+            <Stack>
+              <Typography lineHeight="1.5rem">
+                0 {t("post.comment", 10)}
+              </Typography>
+              <Stack flexDirection="row">
+                <Button onClick={() => setCommentMode(!commentMode)}>
+                  <Comment />
+                  <Typography sx={{ marginLeft: "0.5rem" }}>
+                    {" "}
+                    {t("actions.comment")}
+                  </Typography>
+                </Button>
+              </Stack>
+            </Stack>
+          </Stack>
+          {commentMode && (
+            <Stack
+              sx={{
+                border: "1px solid lightgray",
+                borderRadius: "0.5rem",
+                padding: "1rem",
+              }}
+            >
+              <UserComment />
+              <Box sx={{ width: "100%", display: "flex", margin: "0.5rem 0" }}>
+                <TextField
+                  sx={{ width: "100%" }}
+                  variant="standard"
+                  color="primary"
+                  value={content}
+                  placeholder={t("actions.typeMessage")}
+                  focused
+                  onChange={(event) => setContent(event.target.value)}
+                  multiline
+                />
+                <Button sx={{ marginLeft: "1rem" }} onClick={() => {}}>
+                  {t("actions.comment")}
+                </Button>
+              </Box>
+            </Stack>
+          )}
         </>
       )}
     </Stack>

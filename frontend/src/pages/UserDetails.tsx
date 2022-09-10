@@ -38,14 +38,7 @@ export const UserDetails = () => {
         <PostTile
           post={{
             ...post,
-            user: {
-              email: data?.getUserById.email,
-              firstName: data?.getUserById.firstName,
-              lastName: data?.getUserById.lastName,
-              id: data?.getUserById.id,
-              createdAt: data?.getUserById.createdAt,
-              updatedAt: data?.getUserById.updatedAt,
-            },
+            user: data?.getUserById,
           }}
         />
       ))}

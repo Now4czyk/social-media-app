@@ -8,7 +8,7 @@ const queries = {
   getAllPosts: async (_: ParentNode, args: any, { req }: Context) => {
     decodeToken(req);
 
-    return await PostModel.find().populate('user');
+    return PostModel.find().populate('user').populate('likes');
   },
   getPostsPagination: async (
     _: ParentNode,
@@ -21,6 +21,7 @@ const queries = {
 
     const posts = await PostModel.find()
       .populate('user')
+      .populate('likes')
       .skip((page - 1) * perPage)
       .limit(perPage);
 
@@ -33,7 +34,9 @@ const queries = {
   ) => {
     decodeToken(req);
 
-    return await PostModel.findById({ _id: args.id }).populate('user');
+    return PostModel.findById({ _id: args.id })
+      .populate('user')
+      .populate('likes');
   },
 };
 
@@ -116,6 +119,23 @@ const mutations = {
       post.imageUrl = imageUrl ? imageUrl : post.imageUrl;
       await post.save();
     }
+
+    return post;
+  },
+
+  likePost: async (_: ParentNode, { id }: { id: string }, { req }: Context) => {
+    const decodedUser = decodeToken(req) as Decoded;
+    const post = await PostModel.findOne({ _id: id }).populate('likes');
+    const user = await UserModel.findOne({ _id: decodedUser.userId });
+
+    const index = post?.likes.findIndex(
+      (like) => like.id === decodedUser.userId
+    );
+
+    if (index === -1) post?.likes.push(user!);
+    else post?.likes.splice(index as number, 1);
+
+    await post!.save();
 
     return post;
   },

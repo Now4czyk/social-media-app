@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { FETCH_POSTS_PAGINATION, GetPostsPagination } from "graphql/Post";
 import { PostTile, FormCreatePost } from "components";

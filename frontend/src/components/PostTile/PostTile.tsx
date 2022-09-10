@@ -1,5 +1,10 @@
 import { FC, useState } from "react";
-import { PostPopulated } from "graphql/Post";
+import {
+  FETCH_POST_BY_ID,
+  GetPostById,
+  LIKE_POST,
+  PostPopulated,
+} from "graphql/Post";
 import {
   Avatar,
   Box,
@@ -17,19 +22,31 @@ import useTranslation from "translations/hooks/useTranslations";
 import { PostTilePopover } from "./Popovers/PostTilePopover";
 import { Comment, Recommend, ThumbUp } from "@mui/icons-material";
 import { UserComment } from "../Comment";
+import { useMutation, useQuery } from "@apollo/client";
 
 interface PostTileProps {
   post: PostPopulated;
 }
 
-export const PostTile: FC<PostTileProps> = ({
-  post: { title, description, imageUrl, user, createdAt, id },
-}) => {
+export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
   const navigate = useNavigate();
   const matches = useMediaQuery(MD);
   const { t } = useTranslation();
   const [content, setContent] = useState<string>("");
   const [commentMode, setCommentMode] = useState<boolean>(false);
+  const { data, refetch } = useQuery<GetPostById>(FETCH_POST_BY_ID, {
+    variables: { postId: id },
+  });
+
+  const [likePost] = useMutation(LIKE_POST, {
+    variables: {
+      postId: id,
+    },
+  });
+
+  const isLiked = data?.getPostById.likes.find(
+    (like) => like.id === jwt_decode<Decoded>(auth.getToken() || "").userId
+  );
 
   return (
     <Box
@@ -50,9 +67,9 @@ export const PostTile: FC<PostTileProps> = ({
               marginLeft: "0.3rem",
               fontWeight: "500",
             }}
-            onClick={() => navigate(`/users/${user.id}`)}
+            onClick={() => navigate(`/users/${data?.getPostById.user.id}`)}
           >
-            {`${user.firstName} ${user.lastName}`}
+            {`${data?.getPostById.user.firstName} ${data?.getPostById.user.lastName}`}
           </Typography>
           <Typography
             sx={{
@@ -60,17 +77,20 @@ export const PostTile: FC<PostTileProps> = ({
             }}
           >
             &nbsp;
-            {new Date(parseInt(createdAt)).toLocaleTimeString("pl", {
+            {new Date(
+              parseInt(data?.getPostById.createdAt || "")
+            ).toLocaleTimeString("pl", {
               hour: "2-digit",
               minute: "2-digit",
             }) +
               " " +
-              new Date(parseInt(createdAt || "0")).toLocaleDateString()}
+              new Date(
+                parseInt(data?.getPostById.createdAt || "0")
+              ).toLocaleDateString()}
           </Typography>
         </Stack>
-        {jwt_decode<Decoded>(auth.getToken() || "").userId === user.id && (
-          <PostTilePopover postId={id} />
-        )}
+        {jwt_decode<Decoded>(auth.getToken() || "").userId ===
+          data?.getPostById.user.id && <PostTilePopover postId={id} />}
       </Stack>
       <Typography
         sx={{
@@ -81,12 +101,12 @@ export const PostTile: FC<PostTileProps> = ({
         }}
         onClick={() => navigate(`/posts/${id}`)}
       >
-        {title}
+        {data?.getPostById.title}
       </Typography>
-      <Typography align="justify">{description}</Typography>
+      <Typography align="justify">{data?.getPostById.description}</Typography>
       <Stack alignItems="center">
         <img
-          src={imageUrl}
+          src={data?.getPostById.imageUrl}
           style={{
             maxWidth: matches ? "40rem" : "20rem",
             marginTop: "1rem",
@@ -98,10 +118,20 @@ export const PostTile: FC<PostTileProps> = ({
         <Stack>
           <Stack flexDirection="row">
             <Recommend />
-            <Typography>69</Typography>
+            <Typography>{data?.getPostById.likes.length}</Typography>
           </Stack>
           <Stack flexDirection="row">
-            <Button>
+            <Button
+              variant={isLiked ? "contained" : "text"}
+              onClick={async () => {
+                await likePost();
+                await refetch({
+                  variables: {
+                    postId: id,
+                  },
+                });
+              }}
+            >
               <ThumbUp />
               <Typography sx={{ marginLeft: "0.5rem" }}>
                 {" "}

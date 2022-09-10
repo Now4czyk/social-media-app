@@ -7,6 +7,7 @@ const PostSchema = new Schema<PostPopulated>(
     description: { type: String },
     imageUrl: { type: String },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    likes: [{ type: Schema.Types.ObjectId, ref: 'User', required: true }],
   },
   { timestamps: true }
 );
