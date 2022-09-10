@@ -68,6 +68,7 @@ export const UserPopover = () => {
                     navigate("logout");
                     navigate(0);
                   }}
+                  sx={{ marginLeft: "0.5rem" }}
                 />
               </ListItemButton>
             </>
@@ -78,6 +79,7 @@ export const UserPopover = () => {
                 <ListItemText
                   primary={t("actions.signin")}
                   onClick={() => navigate("signin")}
+                  sx={{ marginLeft: "0.5rem" }}
                 />
               </ListItemButton>
             </>

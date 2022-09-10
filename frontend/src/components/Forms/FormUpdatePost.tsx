@@ -2,10 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { UPDATE_POST } from "graphql/Post";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Stack, useMediaQuery } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";
 import useTranslation from "../../translations/hooks/useTranslations";
+import { MD } from "../../utils";
 
 interface FormInputs {
   title: string;
@@ -22,6 +23,7 @@ export const FormUpdatePost = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const matches = useMediaQuery(MD);
   const methods = useForm<FormInputs>({ defaultValues });
   const params = useParams();
   const { handleSubmit, control, setError, formState, reset } = methods;
@@ -52,13 +54,12 @@ export const FormUpdatePost = ({
   };
 
   return (
-    <Box
+    <Stack
       sx={{
-        display: "flex",
-        flexDirection: "column",
         rowGap: "1rem",
         paddingTop: "1rem",
-        width: "25rem",
+        width: matches ? "25rem" : "20rem",
+        margin: "0 auto",
       }}
     >
       <FormInputText name="title" control={control} label={t("post.title")} />
@@ -66,6 +67,7 @@ export const FormUpdatePost = ({
         name="description"
         control={control}
         label={t("post.description")}
+        multiline={true}
       />
       <FormInputText
         name="imageUrl"
@@ -78,6 +80,6 @@ export const FormUpdatePost = ({
       <Button variant="contained" onClick={() => setEditMode(false)}>
         {t("actions.cancel")}
       </Button>
-    </Box>
+    </Stack>
   );
 };

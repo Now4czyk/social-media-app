@@ -19,7 +19,7 @@ export const LanguageSwitcher = () => {
       variant="standard"
     >
       {locales.map((locale) => (
-        <MenuItem value={locale} sx={{ width: "4rem" }}>
+        <MenuItem key={locale} value={locale} sx={{ width: "4rem" }}>
           {locale}
         </MenuItem>
       ))}

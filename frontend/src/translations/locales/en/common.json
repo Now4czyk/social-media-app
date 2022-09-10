@@ -7,14 +7,18 @@
   },
   "actions": {
     "create": "Create",
+    "details": "Details",
     "createPost": "Create a post",
     "logout": "Log out",
     "signin": "Sign in",
     "signup": "Sign up",
     "cancel": "Cancel",
+    "delete": "Delete",
     "edit": "Edit",
     "send": "Send",
     "update": "Update",
+    "like": "Like",
+    "comment": "Comment",
     "typeMessage": "Type message"
   },
   "post": {
@@ -23,7 +27,9 @@
     "createdAt": "Created at",
     "updatedAt": "Updated at",
     "imageUrl": "Image url",
-    "image": "Image"
+    "image": "Image",
+    "comment": "Comment",
+    "comment_plural": "Comments"
   },
   "user": {
     "user": "User",

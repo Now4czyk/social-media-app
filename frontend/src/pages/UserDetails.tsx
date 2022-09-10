@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Avatar, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { FETCH_USER_BY_ID, GetUserById } from "graphql/User";

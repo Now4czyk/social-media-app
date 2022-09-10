@@ -7,14 +7,18 @@
   },
   "actions": {
     "create": "Utwórz",
+    "details": "Szczegóły",
     "createPost": "Utwórz post",
     "logout": "Wyloguj",
     "signin": "Zaloguj",
     "signup": "Utwórz konto",
     "cancel": "Anuluj",
+    "delete": "Usuń",
     "edit": "Edytuj",
     "send": "Wyślij",
     "update": "Zaktualizuj",
+    "like": "Polub",
+    "comment": "Skomentuj",
     "typeMessage": "Napisz wiadomość"
   },
   "post": {
@@ -23,7 +27,9 @@
     "createdAt": "Utworzono",
     "updatedAt": "Zaktualizowano",
     "imageUrl": "Adres url obrazu",
-    "image": "Obraz"
+    "image": "Obraz",
+    "comment": "Komentarz",
+    "comment_plural": "Komentarzy"
   },
   "user": {
     "user": "Użytkownik",

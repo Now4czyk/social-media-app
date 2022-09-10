@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "graphql/User";
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { Button, Stack, useMediaQuery } from "@mui/material";
 import { FormInputText } from "./utils";
 import { Dispatch, SetStateAction } from "react";
 import useTranslation from "../../translations/hooks/useTranslations";
@@ -58,10 +58,8 @@ export const FormUpdateUser = ({
   };
 
   return (
-    <Box
+    <Stack
       sx={{
-        display: "flex",
-        flexDirection: "column",
         rowGap: "1rem",
         paddingTop: "1rem",
         width: matches ? "25rem" : "20rem",
@@ -85,6 +83,6 @@ export const FormUpdateUser = ({
       <Button variant="contained" onClick={() => setEditMode(false)}>
         {t("actions.cancel")}
       </Button>
-    </Box>
+    </Stack>
   );
 };

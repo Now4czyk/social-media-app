@@ -8,6 +8,7 @@ import { auth, MD } from "utils";
 import { Decoded } from "types";
 import { Clear, Edit } from "@mui/icons-material";
 import { FormUpdatePost } from "components";
+import { PostDetailsPopover } from "../components/PostTile/Popovers";
 
 export const PostDetails = () => {
   const params = useParams();
@@ -47,23 +48,7 @@ export const PostDetails = () => {
             {`${data?.getPostById.user.firstName} ${data?.getPostById.user.lastName}`}
           </Typography>
         </Stack>
-        {jwt_decode<Decoded>(auth.getToken() || "").userId ===
-          data?.getPostById.user.id && (
-          <Box>
-            {!editMode && (
-              <>
-                <Edit onClick={() => setEditMode(true)} />
-                <Clear
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => {
-                    deletePost();
-                    navigate(0);
-                  }}
-                />
-              </>
-            )}
-          </Box>
-        )}
+        {!editMode && <PostDetailsPopover setEditMode={setEditMode} />}
       </Stack>
 
       {editMode ? (
