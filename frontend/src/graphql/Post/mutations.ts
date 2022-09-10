@@ -41,3 +41,11 @@ export const LIKE_POST = gql(`
     }
   }
 `);
+
+export const COMMENT_POST = gql(`
+  mutation CommentPost($postId: ID!, $content: String!) {
+    commentPost(id: $postId, content: $content) {
+      id
+    }
+  }
+`);

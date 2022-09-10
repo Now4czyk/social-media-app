@@ -8,6 +8,7 @@ const PostSchema = new Schema<PostPopulated>(
     imageUrl: { type: String },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     likes: [{ type: Schema.Types.ObjectId, ref: 'User', required: true }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment', required: true }],
   },
   { timestamps: true }
 );
