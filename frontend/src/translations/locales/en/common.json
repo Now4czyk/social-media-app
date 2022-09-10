@@ -7,14 +7,19 @@
   },
   "actions": {
     "create": "Create",
+    "details": "Details",
     "createPost": "Create a post",
     "logout": "Log out",
     "signin": "Sign in",
     "signup": "Sign up",
     "cancel": "Cancel",
+    "delete": "Delete",
     "edit": "Edit",
     "send": "Send",
-    "update": "Update"
+    "update": "Update",
+    "like": "Like",
+    "comment": "Comment",
+    "typeMessage": "Type message"
   },
   "post": {
     "title": "Title",
@@ -22,7 +27,9 @@
     "createdAt": "Created at",
     "updatedAt": "Updated at",
     "imageUrl": "Image url",
-    "image": "Image"
+    "image": "Image",
+    "comment": "Comment",
+    "comment_plural": "Comments"
   },
   "user": {
     "user": "User",
@@ -31,6 +38,7 @@
     "email": "Email"
   },
   "messages": {
+    "all": "All",
     "postDetails": "Post details",
     "userDetails": "User details",
     "forumDescription": "Here you can share your thoughts",

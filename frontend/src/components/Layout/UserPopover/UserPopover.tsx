@@ -13,6 +13,7 @@ import { VERIFY, Verification } from "graphql/Authorization";
 import { useNavigate } from "react-router-dom";
 import { auth } from "utils/auth";
 import useTranslation from "translations/hooks/useTranslations";
+import { Login, Logout, Person } from "@mui/icons-material";
 
 export const UserPopover = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
@@ -47,35 +48,42 @@ export const UserPopover = () => {
           horizontal: "left",
         }}
       >
-        <List
-          sx={{ minWidth: "10rem" }}
-          component="nav"
-          aria-label="mailbox folders"
-        >
-          <ListItemButton>
-            <ListItemText
-              primary={t("tabs.profile")}
-              onClick={() => navigate("profile")}
-            />
-          </ListItemButton>
-          <Divider />
-          <ListItemButton>
-            {data?.verify.isAuthorized ? (
-              <ListItemText
-                primary={t("actions.logout")}
-                onClick={() => {
-                  auth.logout();
-                  navigate("logout");
-                  navigate(0);
-                }}
-              />
-            ) : (
-              <ListItemText
-                primary={t("actions.signin")}
-                onClick={() => navigate("signin")}
-              />
-            )}
-          </ListItemButton>
+        <List sx={{ minWidth: "10rem" }} component="nav">
+          {data?.verify.isAuthorized ? (
+            <>
+              <ListItemButton>
+                <Person />
+                <ListItemText
+                  primary={t("tabs.profile")}
+                  onClick={() => navigate("profile")}
+                />
+              </ListItemButton>
+              <Divider />
+              <ListItemButton>
+                <Logout />
+                <ListItemText
+                  primary={t("actions.logout")}
+                  onClick={() => {
+                    auth.logout();
+                    navigate("logout");
+                    navigate(0);
+                  }}
+                  sx={{ marginLeft: "0.5rem" }}
+                />
+              </ListItemButton>
+            </>
+          ) : (
+            <>
+              <ListItemButton>
+                <Login />
+                <ListItemText
+                  primary={t("actions.signin")}
+                  onClick={() => navigate("signin")}
+                  sx={{ marginLeft: "0.5rem" }}
+                />
+              </ListItemButton>
+            </>
+          )}
         </List>
       </Popover>
     </>

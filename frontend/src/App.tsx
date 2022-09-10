@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
-import { Layout } from "./components/Layout/Layout";
+import { Layout } from "components";
 import { client } from "./graphql/client";
-import { AppRoutes } from "./routes/routes";
+import { AppRoutes } from "./routes";
 
 const App = () => {
   return (

@@ -1,14 +1,22 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { PostPopulated } from "graphql/Post";
-import { Box, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { DELETE_POST } from "graphql/Post";
-import { Clear } from "@mui/icons-material";
-import { auth } from "utils";
+import { auth, MD } from "utils";
 import { Decoded } from "types";
 import jwt_decode from "jwt-decode";
 import useTranslation from "translations/hooks/useTranslations";
+import { PostTilePopover } from "./Popovers/PostTilePopover";
+import { Comment, Recommend, ThumbUp } from "@mui/icons-material";
+import { UserComment } from "../Comment";
 
 interface PostTileProps {
   post: PostPopulated;
@@ -18,47 +26,129 @@ export const PostTile: FC<PostTileProps> = ({
   post: { title, description, imageUrl, user, createdAt, id },
 }) => {
   const navigate = useNavigate();
+  const matches = useMediaQuery(MD);
   const { t } = useTranslation();
-  const [deletePost] = useMutation(DELETE_POST, {
-    variables: {
-      postId: id,
-    },
-  });
+  const [content, setContent] = useState<string>("");
+  const [commentMode, setCommentMode] = useState<boolean>(false);
 
   return (
-    <Box sx={{ border: 1 }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography
-          sx={{ cursor: "pointer" }}
-          onClick={() => navigate(`/users/${user.id}`)}
-        >
-          {t("user.user")}: {`${user.firstName} ${user.lastName}`}
-        </Typography>
+    <Box
+      sx={{
+        border: "1px solid lightgray",
+        borderRadius: "0.5rem",
+        padding: "1rem",
+        marginBottom: "1rem",
+      }}
+    >
+      <Stack justifyContent="space-between" flexDirection="row">
+        <Stack flexDirection="row">
+          <Avatar sx={{ height: "2rem", width: "2rem" }} />
+          <Typography
+            sx={{
+              cursor: "pointer",
+              lineHeight: "2rem",
+              marginLeft: "0.3rem",
+              fontWeight: "500",
+            }}
+            onClick={() => navigate(`/users/${user.id}`)}
+          >
+            {`${user.firstName} ${user.lastName}`}
+          </Typography>
+          <Typography
+            sx={{
+              lineHeight: "2rem",
+            }}
+          >
+            &nbsp;
+            {new Date(parseInt(createdAt)).toLocaleTimeString("pl", {
+              hour: "2-digit",
+              minute: "2-digit",
+            }) +
+              " " +
+              new Date(parseInt(createdAt || "0")).toLocaleDateString()}
+          </Typography>
+        </Stack>
         {jwt_decode<Decoded>(auth.getToken() || "").userId === user.id && (
-          <Box>
-            <Clear
-              sx={{ cursor: "pointer" }}
-              onClick={() => {
-                deletePost();
-                navigate(0);
-              }}
-            />
-          </Box>
+          <PostTilePopover postId={id} />
         )}
-      </Box>
+      </Stack>
       <Typography
-        sx={{ cursor: "pointer" }}
+        sx={{
+          cursor: "pointer",
+          fontWeight: "600",
+          fontSize: "1.5rem",
+          marginTop: "0.5rem",
+        }}
         onClick={() => navigate(`/posts/${id}`)}
       >
-        {t("post.title")}: {title}
+        {title}
       </Typography>
-      <Typography>
-        {t("post.description")}: {description}
-      </Typography>
-      <Typography>
-        {t("post.createdAt")}: {new Date(parseInt(createdAt)).toString()}
-      </Typography>
-      <img src={imageUrl} style={{ maxWidth: "40rem", maxHeight: "40rem" }} />
+      <Typography align="justify">{description}</Typography>
+      <Stack alignItems="center">
+        <img
+          src={imageUrl}
+          style={{
+            maxWidth: matches ? "40rem" : "20rem",
+            marginTop: "1rem",
+            maxHeight: matches ? "40rem" : "20rem",
+          }}
+        />
+      </Stack>
+      <Stack flexDirection="row">
+        <Stack>
+          <Stack flexDirection="row">
+            <Recommend />
+            <Typography>69</Typography>
+          </Stack>
+          <Stack flexDirection="row">
+            <Button>
+              <ThumbUp />
+              <Typography sx={{ marginLeft: "0.5rem" }}>
+                {" "}
+                {t("actions.like")}
+              </Typography>
+            </Button>
+          </Stack>
+        </Stack>
+        <Stack>
+          <Typography lineHeight="1.5rem">0 {t("post.comment", 10)}</Typography>
+          <Stack flexDirection="row">
+            <Button onClick={() => setCommentMode(!commentMode)}>
+              <Comment />
+              <Typography sx={{ marginLeft: "0.5rem" }}>
+                {" "}
+                {t("actions.comment")}
+              </Typography>
+            </Button>
+          </Stack>
+        </Stack>
+      </Stack>
+      {commentMode && (
+        <Stack
+          sx={{
+            border: "1px solid lightgray",
+            borderRadius: "0.5rem",
+            padding: "1rem",
+          }}
+        >
+          <UserComment />
+          <Box sx={{ width: "100%", display: "flex", margin: "0.5rem 0" }}>
+            <TextField
+              sx={{ width: "100%" }}
+              variant="standard"
+              color="primary"
+              value={content}
+              placeholder={t("actions.typeMessage")}
+              focused
+              onChange={(event) => setContent(event.target.value)}
+              multiline
+            />
+            <Button sx={{ marginLeft: "1rem" }} onClick={() => {}}>
+              {t("actions.comment")}
+            </Button>
+          </Box>
+        </Stack>
+      )}
     </Box>
   );
 };

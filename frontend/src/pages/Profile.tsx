@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { FETCH_USER, GetUser } from "graphql/User";
 import { useState } from "react";
@@ -12,28 +12,26 @@ export const Profile = () => {
   const { t } = useTranslation();
 
   return (
-    <Box>
-      <Typography>{t("tabs.profile")}</Typography>
-      <Box
-        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+    <Stack
+      flexDirection="column"
+      border="1px solid lightgray"
+      borderRadius="0.5rem"
+      marginY="1rem"
+      padding="2rem 3rem"
+    >
+      <Avatar
+        sx={{
+          textTransform: "uppercase",
+          width: "7rem",
+          height: "7rem",
+          fontSize: "3rem",
+          margin: "0 auto",
+        }}
       >
-        <Avatar
-          sx={{
-            textTransform: "uppercase",
-            width: "10rem",
-            height: "10rem",
-            fontSize: "4rem",
-          }}
-        >
-          {data?.getUser.firstName[0]}
-          {data?.getUser.lastName[0]}
-        </Avatar>
-        <Edit
-          sx={{ cursor: "pointer" }}
-          onClick={() => setEditMode(!editMode)}
-        />
-      </Box>
-      <Typography>Language: Polish/English</Typography>
+        {data?.getUser.firstName[0]}
+        {data?.getUser.lastName[0]}
+      </Avatar>
+
       {editMode ? (
         <FormUpdateUser
           setEditMode={setEditMode}
@@ -45,25 +43,34 @@ export const Profile = () => {
         />
       ) : (
         <>
-          <Typography>
-            {t("user.firstName")}: {data?.getUser.firstName}
+          <Typography sx={{ fontSize: "2rem" }} align="center">
+            {data?.getUser.firstName + " " + data?.getUser.lastName}
           </Typography>
-          <Typography>
-            {t("user.lastName")}: {data?.getUser.lastName}
-          </Typography>
-          <Typography>
-            {t("user.email")}: {data?.getUser.email}
-          </Typography>
-          <Typography>
-            {t("post.createdAt")}:
-            {" " + new Date(parseInt(data?.getUser.createdAt || "")).toString()}
-          </Typography>
-          <Typography>
-            {t("post.updatedAt")}:
-            {" " + new Date(parseInt(data?.getUser.updatedAt || "")).toString()}
-          </Typography>
+          <Stack alignItems="flex-end">
+            <Edit
+              sx={{ cursor: "pointer" }}
+              onClick={() => setEditMode(!editMode)}
+            />
+          </Stack>
+          <Stack flexDirection="column" marginTop="1rem">
+            <Typography sx={{ fontSize: "1.3rem" }}>
+              {t("user.email")}: {data?.getUser.email}
+            </Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>
+              {t("post.createdAt")}:&nbsp;
+              {new Date(
+                parseInt(data?.getUser.createdAt || "0")
+              ).toLocaleDateString()}
+            </Typography>
+            <Typography sx={{ fontSize: "1.3rem" }}>
+              {t("post.updatedAt")}:&nbsp;
+              {new Date(
+                parseInt(data?.getUser.updatedAt || "0")
+              ).toLocaleDateString()}
+            </Typography>
+          </Stack>
         </>
       )}
-    </Box>
+    </Stack>
   );
 };

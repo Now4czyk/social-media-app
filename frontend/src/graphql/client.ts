@@ -12,6 +12,7 @@ import { CustomError } from "types";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
+import { toast } from "react-toastify";
 
 const wsLink = new GraphQLWsLink(
   createClient({
@@ -27,11 +28,9 @@ const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
   if (graphQLErrors) {
     const { message, extensions } = graphQLErrors[0];
     if (extensions.code === "GRAPHQL_VALIDATION_FAILED") {
-      console.log("unauthorized");
+      // toast.error("Unauthorized");
       auth.logout();
     }
-    console.log("ERROR from App.tsx");
-    console.log(message);
     let iterator = 0;
     const errors = [];
     while (extensions[iterator]) {
@@ -41,7 +40,6 @@ const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
 
     if (errors.length || message) {
       // toast.error(message + " " + errors.join(", "));
-      console.log("TOAST MESSAGE", message + " " + errors.join(", "));
     }
     if (networkError) {
       alert(`[Network error]: ${networkError}`);

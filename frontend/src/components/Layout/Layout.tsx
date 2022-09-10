@@ -1,11 +1,20 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from "react";
-import { AppBar, Box, Container, Tab, Tabs } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Tab,
+  Container,
+  Tabs,
+  useMediaQuery,
+  Drawer,
+} from "@mui/material";
+import { Menu } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserPopover } from "./UserPopover";
-import { auth } from "utils";
+import { auth, MD } from "utils";
 import useTranslation from "translations/hooks/useTranslations";
-import { useStore } from "store";
 import { LanguageSwitcher } from "../../translations/components";
+import { DrawerList } from "./DrawerList";
 
 interface LayoutProps {
   children?: ReactNode;
@@ -19,10 +28,10 @@ export const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { localization, changeLocale } = useStore();
+  const matches = useMediaQuery(MD);
+  const [state, setState] = useState(false);
 
   const site = sites.find((site) => location.pathname.includes(site));
-
   const [value, setValue] = useState<Sites>(site as Sites);
 
   useEffect(() => {
@@ -33,6 +42,19 @@ export const Layout = ({ children }: LayoutProps) => {
     setValue(value as Sites);
     navigate(`${value}`);
   };
+
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setState(open);
+    };
 
   return (
     <>
@@ -63,26 +85,27 @@ export const Layout = ({ children }: LayoutProps) => {
           >
             Boring App
           </Box>
-          {auth.getToken() && (
+          {auth.getToken() && matches && (
             <Tabs value={value} onChange={handleChange}>
               <Tab
                 label={t("tabs.posts")}
-                style={{ color: "white" }}
+                sx={{ color: "white" }}
                 value="/posts"
               />
               <Tab
                 label={t("tabs.profile")}
-                style={{ color: "white" }}
+                sx={{ color: "white" }}
                 value="/profile"
               />
-              <Tab
-                label={t("tabs.users")}
-                style={{ color: "white" }}
-                value="/users"
-              />
+              {/*Section that shows registered users*/}
+              {/*<Tab*/}
+              {/*  label={t("tabs.users")}*/}
+              {/*  style={{ color: "white" }}*/}
+              {/*  value="/users"*/}
+              {/*/>*/}
               <Tab
                 label={t("tabs.forum")}
-                style={{ color: "white" }}
+                sx={{ color: "white" }}
                 value="/forum"
               />
             </Tabs>
@@ -90,12 +113,23 @@ export const Layout = ({ children }: LayoutProps) => {
         </Box>
         <Box sx={{ display: "flex", columnGap: "2rem" }}>
           <LanguageSwitcher />
-          <UserPopover />
+          {matches ? (
+            <UserPopover />
+          ) : (
+            <>
+              <Menu
+                sx={{ marginY: "auto" }}
+                fontSize="large"
+                onClick={toggleDrawer(true)}
+              />
+              <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
+                <DrawerList />
+              </Drawer>
+            </>
+          )}
         </Box>
       </AppBar>
-      <Container sx={{ backgroundColor: "lightgray" }} fixed>
-        {children}
-      </Container>
+      <Container fixed>{children}</Container>
     </>
   );
 };

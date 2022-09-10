@@ -6,6 +6,7 @@ export interface FormInputProps {
   name: string;
   control: any;
   label: string;
+  multiline?: boolean;
   type?: HTMLInputTypeAttribute;
 }
 
@@ -13,6 +14,7 @@ export const FormInputText = ({
   name,
   control,
   label,
+  multiline,
   type,
 }: FormInputProps) => (
   <Controller
@@ -28,6 +30,7 @@ export const FormInputText = ({
         fullWidth
         label={label}
         variant="outlined"
+        multiline={multiline}
       />
     )}
   />

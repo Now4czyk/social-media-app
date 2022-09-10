@@ -7,14 +7,19 @@
   },
   "actions": {
     "create": "Utwórz",
+    "details": "Szczegóły",
     "createPost": "Utwórz post",
     "logout": "Wyloguj",
     "signin": "Zaloguj",
     "signup": "Utwórz konto",
     "cancel": "Anuluj",
+    "delete": "Usuń",
     "edit": "Edytuj",
     "send": "Wyślij",
-    "update": "Zaktualizuj"
+    "update": "Zaktualizuj",
+    "like": "Polub",
+    "comment": "Skomentuj",
+    "typeMessage": "Napisz wiadomość"
   },
   "post": {
     "title": "Tytuł",
@@ -22,7 +27,9 @@
     "createdAt": "Utworzono",
     "updatedAt": "Zaktualizowano",
     "imageUrl": "Adres url obrazu",
-    "image": "Obraz"
+    "image": "Obraz",
+    "comment": "Komentarz",
+    "comment_plural": "Komentarzy"
   },
   "user": {
     "user": "Użytkownik",
@@ -31,6 +38,7 @@
     "email": "Email"
   },
   "messages": {
+    "all": "Wszystkie",
     "postDetails": "Szczegóły postu",
     "userDetails": "Szczegóły użytkownika",
     "forumDescription": "Tutaj możesz podzielić się przemyśleniami",

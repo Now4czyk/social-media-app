@@ -81,8 +81,7 @@ export const FormSignup = () => {
         display: "flex",
         flexDirection: "column",
         rowGap: "1rem",
-        marginTop: "1rem",
-        width: "15rem",
+        width: "20rem",
       }}
     >
       <FormInputText
@@ -116,9 +115,9 @@ export const FormSignup = () => {
       <Button variant="contained" onClick={handleSubmit(onSubmit)}>
         {t("actions.signup")}
       </Button>
-      <Typography sx={{ fontSize: "0.9rem" }}>
-        {t("messages.alreadyUser")}
-        <Link to="/signin"> {t("actions.signin")}</Link>{" "}
+      <Typography sx={{ fontSize: "0.9rem", textAlign: "center" }}>
+        {t("messages.alreadyUser")}&nbsp;
+        <Link to="/signin">{t("actions.signin")}</Link>{" "}
       </Typography>
     </Box>
   );

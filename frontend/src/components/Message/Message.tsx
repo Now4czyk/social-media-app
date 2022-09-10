@@ -1,8 +1,8 @@
 import React from "react";
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Typography, useMediaQuery } from "@mui/material";
 import { MessagePopulated } from "graphql/Message";
 import jwt_decode from "jwt-decode";
-import { auth } from "utils";
+import { auth, MD } from "utils";
 import { Decoded } from "types";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ export const Message = ({
 }: MessageProps) => {
   const isCreator = jwt_decode<Decoded>(auth.getToken() || "").userId === id;
   const navigate = useNavigate();
+  const matches = useMediaQuery(MD);
 
   const date = new Date(parseInt(createdAt)).toLocaleTimeString("pl", {
     hour: "2-digit",
@@ -33,7 +34,7 @@ export const Message = ({
           sx={{
             cursor: "pointer",
             textTransform: "uppercase",
-            marginRight: "0.5rem",
+            marginRight: "1rem",
           }}
         >{`${firstName[0] + lastName[0]}`}</Avatar>
       )}
@@ -42,8 +43,8 @@ export const Message = ({
       )}
       <Typography
         sx={{
-          backgroundColor: isCreator ? "#1D2A44" : "white",
-          maxWidth: "60%",
+          backgroundColor: isCreator ? "#1D2A44" : "lightgray",
+          maxWidth: matches ? "60%" : "80%",
           width: "fit-content",
           padding: "0.5rem 1rem",
           borderRadius: "1rem",
