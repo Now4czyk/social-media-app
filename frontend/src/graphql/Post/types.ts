@@ -1,4 +1,5 @@
 import { User } from "graphql/User";
+import { CommentPopulated } from "../Comment";
 
 export interface PostPopulated {
   id: string;
@@ -6,6 +7,7 @@ export interface PostPopulated {
   description: string;
   user: User;
   likes: Array<{ id: string }>;
+  comments: Array<CommentPopulated>;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;

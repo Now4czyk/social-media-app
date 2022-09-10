@@ -1,5 +1,5 @@
 import { PostPopulated } from './types';
-import { PostModel, UserModel } from '../../models';
+import { CommentModel, PostModel, UserModel } from '../../models';
 import { decodeToken } from '../../utils';
 import { remove } from 'lodash';
 import { Context, Decoded } from '../../types';
@@ -8,7 +8,15 @@ const queries = {
   getAllPosts: async (_: ParentNode, args: any, { req }: Context) => {
     decodeToken(req);
 
-    return PostModel.find().populate('user').populate('likes');
+    return PostModel.find()
+      .populate('user')
+      .populate('likes')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'user',
+        },
+      });
   },
   getPostsPagination: async (
     _: ParentNode,
@@ -22,6 +30,12 @@ const queries = {
     const posts = await PostModel.find()
       .populate('user')
       .populate('likes')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'user',
+        },
+      })
       .skip((page - 1) * perPage)
       .limit(perPage);
 
@@ -36,7 +50,13 @@ const queries = {
 
     return PostModel.findById({ _id: args.id })
       .populate('user')
-      .populate('likes');
+      .populate('likes')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'user',
+        },
+      });
   },
 };
 
@@ -136,6 +156,27 @@ const mutations = {
     else post?.likes.splice(index as number, 1);
 
     await post!.save();
+
+    return post;
+  },
+
+  commentPost: async (
+    _: ParentNode,
+    { id, content }: { id: string; content: string },
+    { req }: Context
+  ) => {
+    const decodedUser = decodeToken(req) as Decoded;
+    const post = await PostModel.findOne({ _id: id });
+    const user = await UserModel.findOne({ _id: decodedUser.userId });
+
+    const comment = new CommentModel({
+      user,
+      content,
+    });
+    await comment.save();
+
+    post?.comments.push(comment);
+    await post?.save();
 
     return post;
   },

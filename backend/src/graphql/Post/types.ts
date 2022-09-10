@@ -1,4 +1,5 @@
 import { User } from '../User/types';
+import { CommentPopulated } from '../Comment/types';
 
 export const types = `
   type Post {
@@ -7,7 +8,8 @@ export const types = `
     description: String!
     imageUrl: String
     user: User
-    likes: [User!]!
+    likes: [User]!
+    comments: [Comment]!
     createdAt: String!
     updatedAt: String!
   }
@@ -24,6 +26,7 @@ export interface PostPopulated {
   description: string;
   user: User;
   likes: Array<User>;
+  comments: Array<CommentPopulated>;
   imageUrl?: string;
   createdAt: string;
   updatedAt: string;

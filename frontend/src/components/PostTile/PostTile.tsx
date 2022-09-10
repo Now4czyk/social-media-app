@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import {
+  COMMENT_POST,
   FETCH_POST_BY_ID,
   GetPostById,
   LIKE_POST,
@@ -28,25 +29,44 @@ interface PostTileProps {
   post: PostPopulated;
 }
 
-export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
+export const PostTile: FC<PostTileProps> = ({ post: { id: postId } }) => {
   const navigate = useNavigate();
   const matches = useMediaQuery(MD);
   const { t } = useTranslation();
   const [content, setContent] = useState<string>("");
   const [commentMode, setCommentMode] = useState<boolean>(false);
   const { data, refetch } = useQuery<GetPostById>(FETCH_POST_BY_ID, {
-    variables: { postId: id },
+    variables: { postId },
   });
 
   const [likePost] = useMutation(LIKE_POST, {
     variables: {
-      postId: id,
+      postId,
+    },
+  });
+
+  const [commentPost] = useMutation(COMMENT_POST, {
+    variables: {
+      postId,
+      content,
     },
   });
 
   const isLiked = data?.getPostById.likes.find(
     (like) => like.id === jwt_decode<Decoded>(auth.getToken() || "").userId
   );
+
+  const handleComment = async () => {
+    if (content) {
+      await commentPost();
+      await refetch({
+        variables: {
+          postId,
+        },
+      });
+      setContent("");
+    }
+  };
 
   return (
     <Box
@@ -90,7 +110,7 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
           </Typography>
         </Stack>
         {jwt_decode<Decoded>(auth.getToken() || "").userId ===
-          data?.getPostById.user.id && <PostTilePopover postId={id} />}
+          data?.getPostById.user.id && <PostTilePopover postId={postId} />}
       </Stack>
       <Typography
         sx={{
@@ -99,7 +119,7 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
           fontSize: "1.5rem",
           marginTop: "0.5rem",
         }}
-        onClick={() => navigate(`/posts/${id}`)}
+        onClick={() => navigate(`/posts/${postId}`)}
       >
         {data?.getPostById.title}
       </Typography>
@@ -127,7 +147,7 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
                 await likePost();
                 await refetch({
                   variables: {
-                    postId: id,
+                    postId,
                   },
                 });
               }}
@@ -141,7 +161,11 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
           </Stack>
         </Stack>
         <Stack>
-          <Typography lineHeight="1.5rem">0 {t("post.comment", 10)}</Typography>
+          <Typography lineHeight="1.5rem">
+            {data?.getPostById.comments.length +
+              " " +
+              t("post.comment", data?.getPostById.comments.length)}
+          </Typography>
           <Stack flexDirection="row">
             <Button onClick={() => setCommentMode(!commentMode)}>
               <Comment />
@@ -159,9 +183,12 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
             border: "1px solid lightgray",
             borderRadius: "0.5rem",
             padding: "1rem",
+            marginTop: "1rem",
           }}
         >
-          <UserComment />
+          {data?.getPostById.comments.map((comment) => (
+            <UserComment comment={comment} />
+          ))}
           <Box sx={{ width: "100%", display: "flex", margin: "0.5rem 0" }}>
             <TextField
               sx={{ width: "100%" }}
@@ -173,7 +200,7 @@ export const PostTile: FC<PostTileProps> = ({ post: { id } }) => {
               onChange={(event) => setContent(event.target.value)}
               multiline
             />
-            <Button sx={{ marginLeft: "1rem" }} onClick={() => {}}>
+            <Button sx={{ marginLeft: "1rem" }} onClick={handleComment}>
               {t("actions.comment")}
             </Button>
           </Box>

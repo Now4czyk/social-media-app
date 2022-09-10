@@ -19,4 +19,9 @@ export const mutations = `
   likePost(
     id: ID!
   ):Post
+  
+  commentPost(
+    id: ID!
+    content: String!
+  ):Post
 `;

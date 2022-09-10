@@ -11,6 +11,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import {
+  COMMENT_POST,
   DELETE_POST,
   FETCH_POST_BY_ID,
   GetPostById,
@@ -44,9 +45,28 @@ export const PostDetails = () => {
     },
   });
 
+  const [commentPost] = useMutation(COMMENT_POST, {
+    variables: {
+      postId: params.postId,
+      content,
+    },
+  });
+
   const isLiked = data?.getPostById.likes.find(
     (like) => like.id === jwt_decode<Decoded>(auth.getToken() || "").userId
   );
+
+  const handleComment = async () => {
+    if (content) {
+      await commentPost();
+      await refetch({
+        variables: {
+          postId: params.postId,
+        },
+      });
+      setContent("");
+    }
+  };
 
   return (
     <Stack
@@ -153,9 +173,12 @@ export const PostDetails = () => {
                 border: "1px solid lightgray",
                 borderRadius: "0.5rem",
                 padding: "1rem",
+                marginTop: "1rem",
               }}
             >
-              <UserComment />
+              {data?.getPostById.comments.map((comment) => (
+                <UserComment comment={comment} />
+              ))}
               <Box sx={{ width: "100%", display: "flex", margin: "0.5rem 0" }}>
                 <TextField
                   sx={{ width: "100%" }}
@@ -167,7 +190,7 @@ export const PostDetails = () => {
                   onChange={(event) => setContent(event.target.value)}
                   multiline
                 />
-                <Button sx={{ marginLeft: "1rem" }} onClick={() => {}}>
+                <Button sx={{ marginLeft: "1rem" }} onClick={handleComment}>
                   {t("actions.comment")}
                 </Button>
               </Box>

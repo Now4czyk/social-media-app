@@ -15,6 +15,14 @@ export const FETCH_POST_BY_ID = gql(`
       likes {
         id
       }
+      comments {
+        content
+        createdAt
+        user {
+          firstName
+          lastName
+        }
+      }
       createdAt
       updatedAt
     }
@@ -55,6 +63,14 @@ export const FETCH_POSTS_PAGINATION = gql(`
         }
         likes {
           id
+        }
+        comments {
+          content
+          createdAt
+          user {
+            firstName
+            lastName
+          }
         }
         createdAt
         updatedAt
