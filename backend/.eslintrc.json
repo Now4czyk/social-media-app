@@ -26,6 +26,8 @@
       "variables": true,
       "allowNamedExports": false
     }],
-    "@typescript-eslint/ban-ts-comment": "off"
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-empty-interface": "off"
   }
 }
