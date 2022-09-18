@@ -1,6 +1,5 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { typeDefs, resolvers } from './graphql';
 import { PubSub } from 'graphql-subscriptions';
@@ -11,8 +10,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
 import { Context } from './types';
-
-dotenv.config();
+import { envGuard } from './utils/envGuard';
 
 const app = express();
 
@@ -62,11 +60,11 @@ const startServer = async () => {
 
   server.applyMiddleware({ app });
 
-  await mongoose.connect(process.env.MONGO_URI!);
+  await mongoose.connect(envGuard.MONGO_URI!);
 
-  httpServer.listen({ port: process.env.PORT }, () => {
+  httpServer.listen({ port: envGuard.PORT }, () => {
     console.log(
-      `Server is now running on http://localhost:${process.env.PORT}${server.graphqlPath}`
+      `Server is now running on http://localhost:${envGuard.PORT}${server.graphqlPath}`
     );
   });
 };

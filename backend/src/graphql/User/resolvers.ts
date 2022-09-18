@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { decodeToken } from '../../utils';
 import { Context, Decoded } from '../../types';
+import { envGuard } from '../../utils/envGuard';
 
 const queries = {
   getAllUsers: async (_: ParentNode, args: any, { req }: Context) => {
@@ -106,7 +107,7 @@ const mutations = {
         userId: user._id.toString(),
         email: user.email,
       },
-      process.env.JWT_KEY!,
+      envGuard.JWT_KEY!,
       { expiresIn: '1h' }
     );
 
