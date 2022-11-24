@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62610161-e504-450f-888c-5a6c3ee6d9b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/envGuard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../its-not-rocket-science-app/test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/graphql/User/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/utils/decodeToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/decodeToken.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
