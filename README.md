@@ -1,4 +1,4 @@
-# Boring-app
+# social-media-app
 Basic fullstack multilanguage social media app.
 
 ## Technologies
